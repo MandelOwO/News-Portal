@@ -22,8 +22,8 @@ SET time_zone = "+00:00";
 -- Databáze: `news2022`
 --
 
--- CREATE DATABASE IF NOT EXISTS `news2022` DEFAULT CHARACTER SET utf8 COLLATE utf8_czech_ci;
--- USE `news2022`;
+ CREATE DATABASE IF NOT EXISTS `NekoNews` DEFAULT CHARACTER SET utf8 COLLATE utf8_czech_ci;
+ USE `NekoNews`;
 
 -- --------------------------------------------------------
 
