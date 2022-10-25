@@ -34,11 +34,21 @@ $articles = $articleRepo->getLastFiveArticles();
         <img src="source/images/Logo.png" alt="">
     </div>
     <menu>
-        <li><a href="">Zprávy</a></li> <!-- TODO link -->
-        <li><a href="">Kategorie</a></li> <!-- TODO link -->
-        <li><a href="">Autoři</a></li> <!-- TODO link -->
-        <li><a href="">Administrace článků</a></li> <!-- TODO link -->
-        <li class="last-li"><a href="">Přidat článek</a></li> <!-- TODO link -->
+        <li class="current-page">
+            <a href="#">Zprávy</a>
+        </li>
+        <li>
+            <a href="category">Kategorie</a>
+        </li>
+        <li>
+            <a href="author">Autoři</a>
+        </li>
+        <li>
+            <a href="">Administrace článků</a> <!-- TODO link -->
+        </li>
+        <li class="last-li">
+            <a href="">Přidat článek</a> <!-- TODO link -->
+        </li>
     </menu>
 </header>
 

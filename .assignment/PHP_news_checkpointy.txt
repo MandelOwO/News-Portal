@@ -1,5 +1,5 @@
 1. checkpoint
-TODO- Výpis článků na hlavní stránce
+- Výpis článků na hlavní stránce
 TODO- Výpis kategorií na stránce Kategori s proklikem na seznam článků z dané kategorie
 TODO- Výpis autorů na stránce Autoři s proklikem na seznam článků daného autora
 TODO- Detail článků

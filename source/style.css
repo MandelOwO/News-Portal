@@ -58,7 +58,7 @@ header{
 }
 .header-logo img {
     max-width: 100vw;
-    max-height: 50vh;
+    max-height: 30vh;
     align-self: center;
     margin: auto;
     /*padding: 10px 25px;*/
@@ -80,6 +80,11 @@ menu>li{
 }
 .last-li{
     border: none;
+}
+
+.current-page{
+    font-weight: bold;
+    text-decoration: underline var(--secondary-font);
 }
 
 menu>li>a{
@@ -131,3 +136,39 @@ article {
     height: 1rem;
 }
 
+/* --- >>>>>>>>>> TABLET <<<<<<<<<< --- */
+@media screen and (min-width: 768px){
+
+
+}
+
+
+/* --- >>>>>>>>>> DESKTOP <<<<<<<<<< --- */
+@media screen and (min-width: 1024px){
+    header{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .header-logo img {
+        max-height: 100px;
+        margin: 0 20px 0 0;
+    }
+
+    header menu{
+        display: flex;
+        flex-direction: row;
+        padding: 0;
+        margin: 0;
+    }
+
+    menu>li{
+        border: none;
+        width: unset;
+    }
+
+    main{
+        max-width: 1024px;
+        margin: 20px auto;
+    }
+}
