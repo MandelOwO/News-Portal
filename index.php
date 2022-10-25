@@ -1,9 +1,21 @@
 <?php
 
+require_once 'tools/App.php';
+require_once 'tools/Tools.php';
+App::init();
+
+$db = new Database();
+$articleRepo = new ArticleRepository($db);
+$authorRepo = new AuthorRepository($db);
+$categoryRepo = new CategoryRepository($db);
+$tool = new Tools();
+
+
+$articles = $articleRepo->getLastFiveArticles();
 
 ?>
 
-<html>
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -18,15 +30,50 @@
 <body>
 
 <header>
-    <img src="source/images/news-logo-placeholder.svg" alt="">
+    <div class="header-logo">
+        <img src="source/images/Logo.png" alt="">
+    </div>
     <menu>
         <li><a href="">Zprávy</a></li> <!-- TODO link -->
         <li><a href="">Kategorie</a></li> <!-- TODO link -->
         <li><a href="">Autoři</a></li> <!-- TODO link -->
         <li><a href="">Administrace článků</a></li> <!-- TODO link -->
-        <li><a href="">Přidat článek</a></li> <!-- TODO link -->
+        <li class="last-li"><a href="">Přidat článek</a></li> <!-- TODO link -->
     </menu>
 </header>
+
+<main>
+    <section class="page-header white-font">
+        <h1>Články</h1>
+        <h3><i>Nejnovější zprávy z IT</i></h3>
+    </section>
+
+    <section>
+        <?php foreach ($articles as $article) { ?>
+            <article>
+                <div class="article-title">
+                    <h2><a href=""><?= $article['title'] ?></a></h2> <!-- TODO link -->
+                    <small>
+                        <?= $tool->convertDate($article['created_at']); ?>
+                        <a href=""><?= $article['name'] ?> <?= $article['surname'] ?></a> <!-- TODO link -->
+                    </small> <br>
+                    <small>
+                        <?= $categoryRepo->writeCategories($article['id']) ?>
+                    </small>
+                </div>
+                <p class="article-perex">
+                    <?= $article['perex'] ?>
+                </p>
+                <div class="read-more">
+                    <a href="">  <!-- TODO link -->
+                        <div><img src="source/icons/arrow-alt-right.svg" alt=""></div>
+                        <div>Číst dále</div>
+                    </a>
+                </div>
+            </article>
+        <?php } ?>
+    </section>
+</main>
 
 </body>
 </html>
