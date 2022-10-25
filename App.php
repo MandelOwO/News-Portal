@@ -12,7 +12,7 @@ class App
 
     public static function load($className)
     {
-        require_once 'model/'.$className.'.php';
+        require_once 'model/' . $className . '.php';
     }
 }
 

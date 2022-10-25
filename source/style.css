@@ -5,6 +5,7 @@
     font-family: Lora;
     src: url("fonts/Lora-VariableFont_wght.ttf");
 }
+
 @font-face {
     font-family: "Century Gothic";
     src: url("fonts/CenturyGothic.ttf");
@@ -15,25 +16,25 @@
     --secondary-background: #397373;
     --primary-font: #4B4B4B;
     --secondary-font: #D6D9C5;
-    --primary-additional :#A65C41;
+    --primary-additional: #A65C41;
     --secondary-aditional: #8C2C23;
 
 }
 
-body{
+body {
     background-color: var(--primary-background);
     color: var(--primary-font);
 }
 
-header{
+header {
     font-family: "Century Gothic", sans-serif;
 }
 
-main{
+main {
     font-family: Lora, serif;
 }
 
-.white-font{
+.white-font {
     color: var(--secondary-font);
 }
 
@@ -46,12 +47,14 @@ body {
 
 /* --- HEADER --- */
 
+/*
 header{
     background-color: var(--secondary-background);
     margin: 0;
     border-end-start-radius: 20px;
     border-end-end-radius: 20px;
 }
+
 .header-logo{
     display: flex;
     justify-content: center;
@@ -61,7 +64,6 @@ header{
     max-height: 30vh;
     align-self: center;
     margin: auto;
-    /*padding: 10px 25px;*/
 }
 
 menu{
@@ -93,20 +95,54 @@ menu>li>a{
     width: 100%;
     font-size: 1.2rem;
 }
+*/
 
-
-/* --- CONTENT --- */
-
-main{
-    margin: 25px;
+.navbar {
+    background-color: var(--secondary-background);
+    border-end-start-radius: 20px;
+    border-end-end-radius: 20px;
+    padding: 0;
 }
 
-.page-header > h1{
-    font-size: 2rem;
+.navbar-brand img {
+    max-height: 60px;
+    padding: 10px 0;
+}
+
+.search {
     margin: 0;
 }
 
-.page-header i{
+.btn-primary {
+    background-color: var(--primary-additional);
+    border-color: var(--primary-additional);
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-aditional);
+    border-color: var(--secondary-aditional);
+}
+
+.dropdown-menu {
+    background-color: #428383;
+    color: var(--primary-font);
+}
+
+.dropdown-item:hover {
+    background-color: var(--secondary-background);
+}
+
+/* --- CONTENT --- */
+
+main {
+    margin: 25px;
+}
+
+.page-header > img {
+    max-height: 200px;
+}
+
+.page-header i {
     color: #8a8a85;
 }
 
@@ -123,7 +159,8 @@ article {
     text-decoration: none;
     color: var(--primary-additional);
 }
-.read-more a{
+
+.read-more a {
     color: var(--secondary-aditional);
     text-decoration: none;
     display: flex;
@@ -132,20 +169,25 @@ article {
     align-items: center;
     column-gap: 5px;
 }
-.read-more img{
+
+.read-more img {
     height: 1rem;
 }
 
+.article-perex {
+    margin-top: 1rem;
+}
+
 /* --- >>>>>>>>>> TABLET <<<<<<<<<< --- */
-@media screen and (min-width: 768px){
+@media screen and (min-width: 768px) {
 
 
 }
 
 
 /* --- >>>>>>>>>> DESKTOP <<<<<<<<<< --- */
-@media screen and (min-width: 1024px){
-    header{
+@media screen and (min-width: 1024px) {
+    header {
         display: flex;
         flex-direction: row;
     }
@@ -155,19 +197,56 @@ article {
         margin: 0 20px 0 0;
     }
 
-    header menu{
+    header menu {
         display: flex;
         flex-direction: row;
         padding: 0;
         margin: 0;
     }
 
-    menu>li{
+    menu > li {
         border: none;
         width: unset;
     }
 
-    main{
+    main {
+        max-width: 1024px;
+        margin: 20px auto;
+    }
+}
+
+/* --- >>>>>>>>>> TABLET <<<<<<<<<< --- */
+@media screen and (min-width: 768px) {
+
+
+}
+
+
+/* --- >>>>>>>>>> DESKTOP <<<<<<<<<< --- */
+@media screen and (min-width: 1024px) {
+    header {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .header-logo img {
+        max-height: 100px;
+        margin: 0 20px 0 0;
+    }
+
+    header menu {
+        display: flex;
+        flex-direction: row;
+        padding: 0;
+        margin: 0;
+    }
+
+    menu > li {
+        border: none;
+        width: unset;
+    }
+
+    main {
         max-width: 1024px;
         margin: 20px auto;
     }
