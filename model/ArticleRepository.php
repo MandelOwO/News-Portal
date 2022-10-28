@@ -8,7 +8,7 @@ class ArticleRepository extends BaseRepository
         $query = '
             SELECT * FROM article
                 INNER JOIN author ON author.id = article.author_id
-            ORDER BY created_at
+            ORDER BY created_at DESC
             LIMIT 5
         ';
         $stmt = $this->dbConn->selectAll($query);

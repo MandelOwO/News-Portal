@@ -23,41 +23,27 @@ $firstLetters = $categoryRepo->getCategoriesFirstLetter();
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- STYLE LINKS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+            integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <?php $tool->importBootstrap(); ?>
 
     <link rel="stylesheet" href="../source/style.css">
 
 
-    <title>Kategorie</title>
+    <title>Neko news | Kategorie</title>
 </head>
+
+
 <body>
 
-<header>
-    <div class="header-logo">
-        <img src="../source/images/Logo.png" alt="">
-    </div>
-    <menu>
-        <li>
-            <a href="../">Zprávy</a>
-        </li>
-        <li class="current-page">
-            <a href="#">Kategorie</a>
-        </li>
-        <li>
-            <a href="../author">Autoři</a>
-        </li>
-        <li>
-            <a href="">Administrace článků</a> <!-- TODO link -->
-        </li>
-        <li class="last-li">
-            <a href="">Přidat článek</a> <!-- TODO link -->
-        </li>
-    </menu>
-</header>
+
+<script>
+    $(function () {
+        $("#includedContent").load("../source/pages/navbar.php?page=category");
+    });
+</script>
+<div id="includedContent"></div>
+
 
 <main>
     <section class="page-header white-font">
@@ -65,6 +51,18 @@ $firstLetters = $categoryRepo->getCategoriesFirstLetter();
     </section>
 
     <section class="categories-list">
+        <?php foreach ($firstLetters as $firstLetter) { ?>
+            <div class="category-group">
+                <h2><?= $firstLetter['first_letter'] ?></h2>
+                <?php foreach ($categoryRepo->getCategoriesByLetter($firstLetter['first_letter']) as $item) { ?>
+                    <ul>
+                        <li>
+                            <a href="articles.php?=category_id=<?= $item['id'] ?>"><?= $item['name'] ?></a>
+                        </li>
+                    </ul>
+                <?php } ?>
+            </div>
+        <?php } ?>
 
     </section>
 </main>
