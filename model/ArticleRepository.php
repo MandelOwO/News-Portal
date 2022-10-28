@@ -33,6 +33,37 @@ class ArticleRepository extends BaseRepository
         return $stmt;
     }
 
+    public function getArticlesByCategory($categoryId)
+    {
+        $query = '
+            SELECT *
+            FROM article ar
+                INNER JOIN article_category ac ON ac.article_id = ar.id
+                INNER JOIN author au ON au.id = ar.author_id
+            WHERE ac.category_id = :id
+        ';
+        $data = [
+            ':id' => $categoryId,
+        ];
+
+        return $this->dbConn->selectAll($query, $data);
+    }
+
+    public function getArticlesByAuthor($authorId)
+    {
+        $query = '
+            SELECT *
+            FROM article ar
+                INNER JOIN author au ON au.id = ar.author_id
+            WHERE ar.author_id = :id
+        ';
+        $data = [
+            ':id' => $authorId,
+        ];
+
+        return $this->dbConn->selectAll($query, $data);
+    }
+
 
     protected function getTableName()
     {

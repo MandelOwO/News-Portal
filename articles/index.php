@@ -58,7 +58,7 @@ $menuAuthorSource = $authorRepo->getLastFiveAuthors();
                     <h2><a href="article.php?article_id=<?= $article['id'] ?>"><?= $article['title'] ?></a></h2>
                     <small>
                         <?= $tool->convertDate($article['created_at']); ?>
-                        <a href=""><?= $article['name'] ?> <?= $article['surname'] ?></a> <!-- TODO link -->
+                        <a href="../author/articles.php?author_id=<?= $article['author_id'] ?>"><?= $article['name'] ?> <?= $article['surname'] ?></a>
                     </small> <br>
                     <small>
                         <?= $categoryRepo->writeCategories($article['id']) ?>

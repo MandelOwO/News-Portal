@@ -57,7 +57,7 @@ $firstLetters = $categoryRepo->getCategoriesFirstLetter();
                 <?php foreach ($categoryRepo->getCategoriesByLetter($firstLetter['first_letter']) as $item) { ?>
                     <ul>
                         <li>
-                            <a href="articles.php?=category_id=<?= $item['id'] ?>"><?= $item['name'] ?></a>
+                            <a href="articles.php?category_id=<?= $item['id'] ?>"><?= $item['name'] ?></a>
                         </li>
                     </ul>
                 <?php } ?>
