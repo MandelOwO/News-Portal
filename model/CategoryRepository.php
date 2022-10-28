@@ -28,7 +28,7 @@ class CategoryRepository extends BaseRepository
 
         $string = '';
         foreach ($categories as $category) {
-            $string .= '<a href="category/articles.php?category_id=' . $category['category_id'] . '">' . $category['category_name'] . ' </a>';
+            $string .= '<a href="../category/articles.php?category_id=' . $category['category_id'] . '">' . $category['category_name'] . ' </a>';
         }
 
         return $string;

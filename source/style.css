@@ -110,6 +110,23 @@ article {
     color: var(--primary-additional);
 }
 
+.article-title h1 {
+    color: var(--primary-additional);
+}
+
+.article-text h2 {
+    color: var(--primary-additional);
+}
+
+.article-text code, a {
+    color: var(--secondary-aditional);
+}
+
+.article-image img {
+    width: 100%;
+    margin: 2rem 0;
+}
+
 .read-more a {
     color: var(--secondary-aditional);
     text-decoration: none;
@@ -150,7 +167,6 @@ article {
 
 /* --- >>>>>>>>>> TABLET <<<<<<<<<< --- */
 @media screen and (min-width: 768px) {
-
 
 }
 

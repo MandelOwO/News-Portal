@@ -2,7 +2,7 @@
 - Výpis článků na hlavní stránce
 - Výpis kategorií na stránce Kategori s proklikem na seznam článků z dané kategorie
 TODO- Výpis autorů na stránce Autoři s proklikem na seznam článků daného autora
-TODO- Detail článků
+- Detail článků
 - Data a časy v českém formátu
 TODO- Prolinkovat vše, co bude možné
 TODO- - Odkazy na detail článků

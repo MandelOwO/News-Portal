@@ -16,6 +16,23 @@ class ArticleRepository extends BaseRepository
         return $stmt;
     }
 
+    public function getArticleById($id)
+    {
+        $query = '
+            SELECT * FROM article
+                INNER JOIN author ON author.id = article.author_id
+            WHERE article.id = :id
+
+        ';
+        $data = [
+            ':id' => $id,
+        ];
+
+        $stmt = $this->dbConn->selectOne($query, $data);
+
+        return $stmt;
+    }
+
 
     protected function getTableName()
     {

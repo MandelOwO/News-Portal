@@ -55,7 +55,7 @@ $menuAuthorSource = $authorRepo->getLastFiveAuthors();
         <?php foreach ($articles as $article) { ?>
             <article>
                 <div class="article-title">
-                    <h2><a href=""><?= $article['title'] ?></a></h2> <!-- TODO link -->
+                    <h2><a href="article.php?article_id=<?= $article['id'] ?>"><?= $article['title'] ?></a></h2>
                     <small>
                         <?= $tool->convertDate($article['created_at']); ?>
                         <a href=""><?= $article['name'] ?> <?= $article['surname'] ?></a> <!-- TODO link -->
@@ -68,7 +68,7 @@ $menuAuthorSource = $authorRepo->getLastFiveAuthors();
                     <?= $article['perex'] ?>
                 </p>
                 <div class="read-more">
-                    <a href="">  <!-- TODO link -->
+                    <a href="article.php?article_id=<?= $article['id'] ?>">
                         <div><img src="../source/icons/arrow-alt-right.svg" alt=""></div>
                         <div>Číst dále</div>
                     </a>
