@@ -75,8 +75,5 @@ if (empty($_GET['article_id']) || $article == null) {
         </article>
     </section>
 </main>
-
 </body>
-
-
 </html>

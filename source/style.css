@@ -118,13 +118,13 @@ article {
     color: var(--primary-additional);
 }
 
-.article-text code, a {
+.article-text code, .article-text a {
     color: var(--secondary-aditional);
 }
 
 .article-image img {
     width: 100%;
-    margin: 2rem 0;
+    margin: 2rem;
 }
 
 .read-more a {
@@ -163,6 +163,17 @@ article {
 
 .category-group a {
     color: var(--primary-font);
+}
+
+/* --- AUTHOR LIST --- */
+.author-list img {
+    height: 4rem;
+    border-radius: 50%;
+}
+
+.author-list a, .author-list li {
+    text-decoration: none;
+    margin: 1rem 0;
 }
 
 /* --- >>>>>>>>>> TABLET <<<<<<<<<< --- */
