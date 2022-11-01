@@ -81,6 +81,11 @@ body {
 .dropdown-item:hover {
     background-color: var(--secondary-background);
 }
+@media (min-width: 992px) {
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+}
 
 /* --- CONTENT --- */
 

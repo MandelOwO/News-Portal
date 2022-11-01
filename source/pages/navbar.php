@@ -71,8 +71,45 @@ $menuAuthorSource = $authorRepo->getLastFiveAuthors();
                         <li><a class="dropdown-item" href="../author">Všichni autoři</a></li>
                     </ul>
                 </li>
-
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle <?= $_GET['page'] == 'admin' ? 'active' : '' ?>"
+                       href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Administrace
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="">Články</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="">Přidat článek</a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="">Kategorie</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="">Přidat Kategorii</a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="">Autoři</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="">Přidat Autora</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link <?= $_GET['page'] == 'login' ? 'active' : '' ?> "
+                       aria-current="page" href="">Přihlšení</a>
+                </li>
             </ul>
+
             <form class="d-flex search" role="search">
                 <input class="form-control me-2" type="search" placeholder="Vyhledat na webu" aria-label="Search"
                        name="search">
