@@ -106,7 +106,7 @@ $menuAuthorSource = $authorRepo->getLastFiveAuthors();
                 </li>
                 <li class="nav-item">
                     <a class="nav-link <?= $_GET['page'] == 'login' ? 'active' : '' ?> "
-                       aria-current="page" href="">Přihlšení</a>
+                       aria-current="page" href="">Přihlášení</a>
                 </li>
             </ul>
 
