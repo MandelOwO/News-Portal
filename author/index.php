@@ -8,6 +8,7 @@ $db = new Database();
 $tool = new Tools();
 
 $authorRepo = new AuthorRepository($db);
+$categoryRepo = new CategoryRepository($db);
 
 $authors = $authorRepo->getAll();
 ?>
@@ -32,12 +33,10 @@ $authors = $authorRepo->getAll();
 
 <body>
 
-<script>
-    $(function () {
-        $("#includedContent").load("../source/pages/navbar.php?page=author");
-    });
-</script>
-<div id="includedContent"></div>
+<?php
+$page = 'author';
+require_once '../source/pages/navbar.php';
+?>
 
 
 <main>

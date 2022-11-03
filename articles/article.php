@@ -39,12 +39,10 @@ if (empty($_GET['article_id']) || $article == null) {
 
 <body>
 
-<script>
-    $(function () {
-        $("#includedContent").load("../source/pages/navbar.php?page=home");
-    });
-</script>
-<div id="includedContent"></div>
+<?php
+$page = 'home';
+require_once '../source/pages/navbar.php';
+?>
 
 
 <main>

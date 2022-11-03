@@ -10,11 +10,8 @@ $authorRepo = new AuthorRepository($db);
 $categoryRepo = new CategoryRepository($db);
 $tool = new Tools();
 
-
 $articles = $articleRepo->getLastFiveArticles();
 
-$menuCategorySource = $categoryRepo->getLastFiveCategories();
-$menuAuthorSource = $authorRepo->getLastFiveAuthors();
 ?>
 
 <html lang="cs">
@@ -36,13 +33,11 @@ $menuAuthorSource = $authorRepo->getLastFiveAuthors();
 
 <body>
 
-
-<script>
-    $(function () {
-        $("#includedContent").load("../source/pages/navbar.php?page=home");
-    });
-</script>
-<div id="includedContent"></div>
+<!-- NAVBAR -->
+<?php
+$page = 'home';
+require_once '../source/pages/navbar.php';
+?>
 
 
 <main>

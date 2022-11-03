@@ -9,6 +9,8 @@ $db = new Database();
 $tool = new Tools();
 
 $categoryRepo = new CategoryRepository($db);
+$authorRepo = new AuthorRepository($db);
+
 
 $firstLetters = $categoryRepo->getCategoriesFirstLetter();
 
@@ -37,12 +39,11 @@ $firstLetters = $categoryRepo->getCategoriesFirstLetter();
 <body>
 
 
-<script>
-    $(function () {
-        $("#includedContent").load("../source/pages/navbar.php?page=category");
-    });
-</script>
-<div id="includedContent"></div>
+<?php
+$page = 'category';
+require_once '../source/pages/navbar.php';
+?>
+
 
 
 <main>

@@ -1,11 +1,6 @@
 <?php
 
-require_once '../../App.php';
-App::init();
 
-$db = new Database();
-$authorRepo = new AuthorRepository($db);
-$categoryRepo = new CategoryRepository($db);
 
 $menuCategorySource = $categoryRepo->getLastFiveCategories();
 $menuAuthorSource = $authorRepo->getLastFiveAuthors();
@@ -26,11 +21,11 @@ $menuAuthorSource = $authorRepo->getLastFiveAuthors();
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link <?= $_GET['page'] == 'home' ? 'active' : '' ?> "
+                    <a class="nav-link <?= $page == 'home' ? 'active' : '' ?> "
                        aria-current="page" href="../articles">Zprávy</a>
                 </li>
                 <li class="nav-item dropdown ">
-                    <a class="nav-link dropdown-toggle <?= $_GET['page'] == 'category' ? 'active' : '' ?>"
+                    <a class="nav-link dropdown-toggle <?= $page == 'category' ? 'active' : '' ?>"
                        href="#" role="button" data-bs-toggle="dropdown"
                        aria-expanded="false">
                         Kategorie
@@ -51,7 +46,7 @@ $menuAuthorSource = $authorRepo->getLastFiveAuthors();
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle <?= $_GET['page'] == 'author' ? 'active' : '' ?>"
+                    <a class="nav-link dropdown-toggle <?= $page == 'author' ? 'active' : '' ?>"
                        href="#" role="button" data-bs-toggle="dropdown"
                        aria-expanded="false">
                         Autoři
@@ -72,7 +67,7 @@ $menuAuthorSource = $authorRepo->getLastFiveAuthors();
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle <?= $_GET['page'] == 'admin' ? 'active' : '' ?>"
+                    <a class="nav-link dropdown-toggle <?= $page == 'admin' ? 'active' : '' ?>"
                        href="#" role="button" data-bs-toggle="dropdown"
                        aria-expanded="false">
                         Administrace

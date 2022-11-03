@@ -37,12 +37,11 @@ $articles = $articleRepo->getArticlesByAuthor($_GET['author_id'])
 </head>
 <body>
 
-<script>
-    $(function () {
-        $("#includedContent").load("../source/pages/navbar.php?page=category");
-    });
-</script>
-<div id="includedContent"></div>
+<?php
+$page = 'author';
+require_once '../source/pages/navbar.php';
+?>
+
 
 <main>
     <section class="page-header white-font">
