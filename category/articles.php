@@ -44,7 +44,10 @@ require_once '../source/pages/navbar.php';
 
 <main>
     <section class="page-header white-font">
-        <h1><?= $category['name'] ?></h1>
+        <h1>
+            Články z kategorie
+            <?= $category['name'] ?>
+        </h1>
     </section>
 
     <section>

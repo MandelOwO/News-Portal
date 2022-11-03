@@ -187,9 +187,33 @@ article {
     margin: 1rem 0;
 }
 
+/* --- ADMIN PANEL ---*/
+.admin-nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.admin-nav a{
+    background-color: var(--primary-additional);
+    color: var(--secondary-font);
+    text-decoration: none;
+    padding: 0.5rem;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.admin-nav a:hover{
+    background-color: var(--secondary-aditional);
+}
+
+
 /* --- >>>>>>>>>> TABLET <<<<<<<<<< --- */
 @media screen and (min-width: 768px) {
-
+.admin-nav{
+    flex-direction: row;
+}
 }
 
 

@@ -1,7 +1,6 @@
 <?php
 
 
-
 $menuCategorySource = $categoryRepo->getLastFiveCategories();
 $menuAuthorSource = $authorRepo->getLastFiveAuthors();
 
@@ -73,30 +72,13 @@ $menuAuthorSource = $authorRepo->getLastFiveAuthors();
                         Administrace
                     </a>
                     <ul class="dropdown-menu">
-                        <li>
-                            <a class="dropdown-item" href="">Články</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="">Přidat článek</a>
-                        </li>
+                        <li><a class="dropdown-item" href="../admin">Dashboard</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li>
-                            <a class="dropdown-item" href="">Kategorie</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="">Přidat Kategorii</a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="">Autoři</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="">Přidat Autora</a>
-                        </li>
+                        <li><a class="dropdown-item" href="">Články</a></li>
+                        <li><a class="dropdown-item" href="">Kategorie</a></li>
+                        <li><a class="dropdown-item" href="">Autoři</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">

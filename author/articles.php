@@ -46,6 +46,7 @@ require_once '../source/pages/navbar.php';
 <main>
     <section class="page-header white-font">
         <h1>
+            Články od autora
             <?= $author['name'] ?>
             <?= $author['surname'] ?>
         </h1>
