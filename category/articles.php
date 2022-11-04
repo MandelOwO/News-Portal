@@ -37,16 +37,17 @@ $articles = $articleRepo->getArticlesByCategory($_GET['category_id'])
 </head>
 <body>
 
-<script>
-    $(function () {
-        $("#includedContent").load("../source/pages/navbar.php?page=category");
-    });
-</script>
-<div id="includedContent"></div>
+<?php
+$page = 'category';
+require_once '../source/pages/navbar.php';
+?>
 
 <main>
     <section class="page-header white-font">
-        <h1><?= $category['name'] ?></h1>
+        <h1>
+            Články z kategorie
+            <?= $category['name'] ?>
+        </h1>
     </section>
 
     <section>

@@ -1,11 +1,5 @@
 <?php
 
-require_once '../../App.php';
-App::init();
-
-$db = new Database();
-$authorRepo = new AuthorRepository($db);
-$categoryRepo = new CategoryRepository($db);
 
 $menuCategorySource = $categoryRepo->getLastFiveCategories();
 $menuAuthorSource = $authorRepo->getLastFiveAuthors();
@@ -26,11 +20,11 @@ $menuAuthorSource = $authorRepo->getLastFiveAuthors();
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link <?= $_GET['page'] == 'home' ? 'active' : '' ?> "
+                    <a class="nav-link <?= $page == 'home' ? 'active' : '' ?> "
                        aria-current="page" href="../articles">Zprávy</a>
                 </li>
                 <li class="nav-item dropdown ">
-                    <a class="nav-link dropdown-toggle <?= $_GET['page'] == 'category' ? 'active' : '' ?>"
+                    <a class="nav-link dropdown-toggle <?= $page == 'category' ? 'active' : '' ?>"
                        href="#" role="button" data-bs-toggle="dropdown"
                        aria-expanded="false">
                         Kategorie
@@ -51,7 +45,7 @@ $menuAuthorSource = $authorRepo->getLastFiveAuthors();
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle <?= $_GET['page'] == 'author' ? 'active' : '' ?>"
+                    <a class="nav-link dropdown-toggle <?= $page == 'author' ? 'active' : '' ?>"
                        href="#" role="button" data-bs-toggle="dropdown"
                        aria-expanded="false">
                         Autoři
@@ -71,8 +65,28 @@ $menuAuthorSource = $authorRepo->getLastFiveAuthors();
                         <li><a class="dropdown-item" href="../author">Všichni autoři</a></li>
                     </ul>
                 </li>
-
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle <?= $page == 'admin' ? 'active' : '' ?>"
+                       href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Administrace
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="../admin">Dashboard</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="">Články</a></li>
+                        <li><a class="dropdown-item" href="">Kategorie</a></li>
+                        <li><a class="dropdown-item" href="">Autoři</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link <?= $_GET['page'] == 'login' ? 'active' : '' ?> "
+                       aria-current="page" href="">Přihlášení</a>
+                </li>
             </ul>
+
             <form class="d-flex search" role="search">
                 <input class="form-control me-2" type="search" placeholder="Vyhledat na webu" aria-label="Search"
                        name="search">

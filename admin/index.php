@@ -5,15 +5,14 @@ require_once '../tools/Tools.php';
 App::init();
 
 $db = new Database();
-$tool = new Tools();
-
 $authorRepo = new AuthorRepository($db);
 $categoryRepo = new CategoryRepository($db);
+$tool = new Tools();
 
-$authors = $authorRepo->getAll();
 ?>
 
-<html lang="cs">
+
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -24,39 +23,29 @@ $authors = $authorRepo->getAll();
     <script src="https://code.jquery.com/jquery-3.6.1.js"
             integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     <?php $tool->importBootstrap(); ?>
-
     <link rel="stylesheet" href="../source/style.css">
 
-    <title>Neko news | Autoři</title>
+    <title>Neko news | Administrace</title>
 </head>
-
-
 <body>
 
+
+<!-- NAVBAR -->
 <?php
-$page = 'author';
+$page = 'admin';
 require_once '../source/pages/navbar.php';
 ?>
 
-
 <main>
-    <section class="page-header white-font">
-        <h1>Naši autoři</h1>
-    </section>
 
-    <section class="author-list">
-        <ul class="category-group">
-            <?php foreach ($authors as $author) { ?>
-                <li>
-                    <a href="articles.php?author_id=<?= $author['id'] ?>">
-                        <img src="<?= $author['profile_photo'] ?>" alt="">
-                        <?= $author['name'] ?>
-                        <?= $author['surname'] ?>
-                    </a>
-                </li>
-            <?php } ?>
-        </ul>
-    </section>
+    <nav class="admin-nav">
+        <a href="">Přidat článek</a>
+        <a href="">Přidat kategorii</a>
+        <a href="">Přidat autora</a>
+    </nav>
+
+
 </main>
+
 </body>
 </html>
