@@ -246,6 +246,49 @@ article, .white-fill {
     }
 }
 
+/* --- ADMIN TABLE --- */
+.table-icon {
+    height: 15px;
+}
+
+.action-column {
+    width: 50px;
+}
+
+.btn-outline-dark {
+    border-color: var(--primary-font);
+}
+
+.btn-outline-dark:hover {
+    background-color: var(--primary-additional);
+}
+
+.btn-edit:hover {
+    background-color: var(--secondary-background);
+}
+
+.modal-header {
+    color: var(--secondary-aditional);
+    font-weight: bold;
+}
+
+.modal-content {
+    background-color: var(--secondary-font);
+    color: var(--primary-font);
+}
+
+.modal-footer > .btn {
+    background-color: var(--secondary-aditional);
+    border: none;
+}
+
+.modal-footer > .btn:hover {
+    background-color: var(--primary-additional);
+}
+
+.modal-header, .modal-body, .modal-footer {
+    border-color: var(--primary-font);
+}
 
 /* --- >>>>>>>>>> TABLET <<<<<<<<<< --- */
 @media screen and (min-width: 768px) {

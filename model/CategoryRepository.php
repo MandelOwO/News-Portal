@@ -86,6 +86,21 @@ class CategoryRepository extends BaseRepository
         return $this->dbConn->selectAll($query);
     }
 
+    public function getCategoryTableData()
+    {
+        $query = '
+            SELECT 
+                ca.name AS name,
+                ca.id AS id,
+                COUNT(ac.article_id) AS article_count
+            FROM category ca 
+                LEFT JOIN article_category ac ON ac.category_id = ca.id
+            GROUP BY name, id
+            ORDER BY name ASC
+        ';
+
+        return $this->dbConn->selectAll($query);
+    }
 
     protected function getTableName()
     {

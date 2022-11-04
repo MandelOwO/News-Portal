@@ -69,6 +69,14 @@
     .rwd-table th:last-child, .rwd-table td:last-child {
         padding-right: 0;
     }
+
+
+}
+
+@media (max-width: 480px) {
+    .table-edit-buttons {
+        margin-top: 5px;
+    }
 }
 
 
@@ -103,5 +111,5 @@
 }
 
 .rwd-table tr:hover {
-    background-color: #adafa0;
+    background-color: #e3e5e0;
 }

@@ -9,6 +9,8 @@ $authorRepo = new AuthorRepository($db);
 $categoryRepo = new CategoryRepository($db);
 $tool = new Tools();
 
+$tableData = $categoryRepo->getCategoryTableData()
+
 ?>
 
 <html lang="cs">
@@ -47,16 +49,53 @@ require_once '../source/pages/navbar.php';
                 <th>Akce</th>
             </tr>
 
-            <tr>
-                <td data-th="Název">Star Wars</td>
-                <td data-th="Počet článků">Adventure, Sci-fi</td>
-                <td data-th="Akce">1977</td>
-            </tr>
+            <?php foreach ($tableData as $row) { ?>
+                <tr>
+                    <td data-th="Název"><?= $row['name'] ?></td>
+                    <td data-th="Počet článků"><?= $row['article_count'] ?></td>
+                    <td data-th="Akce" class="action-column">
+                        <div class="btn-group btn-group-sm table-edit-buttons" role="group"
+                             aria-label="Small button group">
+                            <a href="" type="button" class="btn btn-outline-dark btn-delete"
+                                <?php if ($row['article_count'] > 0) { ?>
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                <?php } ?>
+                            >
+                                <!-- TODO link -->
+                                <img src="../source/icons/trash.svg" alt="smazat" class="table-icon">
+                            </a>
+                            <a href="" type="button" class="btn btn-outline-dark btn-edit ">
+                                <!-- TODO link -->
+                                <img src="../source/icons/pen.svg" alt="upravit" class="table-icon">
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            <?php } ?>
+
 
         </table>
     </div>
 
 </main>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Kategorie nemůže být smazána</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Kategorii nelze smazat, protože k ní jsou přiřazeny články. Nejprve odstraňte články z této kategorie.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 </body>
