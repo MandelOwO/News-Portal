@@ -12,7 +12,7 @@ $tool = new Tools();
 ?>
 
 
-<html>
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -20,10 +20,9 @@ $tool = new Tools();
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- STYLE LINKS -->
-    <script src="https://code.jquery.com/jquery-3.6.1.js"
-            integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     <?php $tool->importBootstrap(); ?>
     <link rel="stylesheet" href="../source/style.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
     <title>Neko news | Administrace</title>
 </head>
@@ -39,13 +38,34 @@ require_once '../source/pages/navbar.php';
 <main>
 
     <nav class="admin-nav">
-        <a href="">Přidat článek</a>
-        <a href="">Přidat kategorii</a>
-        <a href="">Přidat autora</a>
+        <a href="">
+            <button type="button" class="btn btn-bd-primary">Přidat článek</button>
+        </a>
+        <a href="">
+            <button type="button" class="btn btn-bd-primary">Přidat kategorii</button>
+        </a>
+        <a href="">
+            <button type="button" class="btn btn-bd-primary">Přidat autora</button>
+        </a>
+
+
     </nav>
+
+    <section class="white-fill">
+        <div class="article-title">
+            <h1>Dashboard comming soon...</h1>
+        </div>
+    </section>
 
 
 </main>
 
+<!-- GO TO TOP BTN -->
+<div id="ToTopBtn"></div>
+<script>
+    $(function () {
+        $("#ToTopBtn").load("../source/ToTopBtn.html");
+    });
+</script>
 </body>
 </html>

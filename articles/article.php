@@ -72,6 +72,16 @@ require_once '../source/pages/navbar.php';
             </div>
         </article>
     </section>
+
+
 </main>
+
+<!-- GO TO TOP BTN -->
+<div id="ToTopBtn"></div>
+<script>
+    $(function () {
+        $("#ToTopBtn").load("../source/pages/ToTopBtn.html");
+    });
+</script>
 </body>
 </html>

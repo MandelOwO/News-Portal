@@ -82,15 +82,15 @@ $menuAuthorSource = $authorRepo->getLastFiveAuthors();
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link <?= $_GET['page'] == 'login' ? 'active' : '' ?> "
-                       aria-current="page" href="">Přihlášení</a>
+                    <a class="nav-link <?= $page == 'login' ? 'active' : '' ?> "
+                       href="">Přihlášení</a>
                 </li>
             </ul>
 
             <form class="d-flex search" role="search">
                 <input class="form-control me-2" type="search" placeholder="Vyhledat na webu" aria-label="Search"
                        name="search">
-                <button class="btn btn-primary" type="submit">Vyhledat</button>  <!-- TODO search -->
+                <button class="btn btn-bd-primary" type="submit">Vyhledat</button>  <!-- TODO search -->
             </form>
         </div>
     </div>
