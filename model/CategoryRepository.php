@@ -86,6 +86,7 @@ class CategoryRepository extends BaseRepository
         return $this->dbConn->selectAll($query);
     }
 
+
     protected function getTableName()
     {
         return 'category';

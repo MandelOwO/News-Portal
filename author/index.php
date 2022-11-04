@@ -25,7 +25,7 @@ $authors = $authorRepo->getAll();
             integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     <?php $tool->importBootstrap(); ?>
 
-    <link rel="stylesheet" href="../source/style.css">
+    <link rel="stylesheet" href="../source/styles/style.css">
 
     <title>Neko news | Autoři</title>
 </head>

@@ -3,12 +3,12 @@
 /* --- General styles --- */
 @font-face {
     font-family: Lora;
-    src: url("fonts/Lora-VariableFont_wght.ttf");
+    src: url("../fonts/Lora-VariableFont_wght.ttf");
 }
 
 @font-face {
     font-family: "Century Gothic";
-    src: url("fonts/CenturyGothic.ttf");
+    src: url("../fonts/CenturyGothic.ttf");
 }
 
 * {
@@ -245,6 +245,7 @@ article, .white-fill {
         width: 100%;
     }
 }
+
 
 /* --- >>>>>>>>>> TABLET <<<<<<<<<< --- */
 @media screen and (min-width: 768px) {

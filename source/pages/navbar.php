@@ -76,9 +76,9 @@ $menuAuthorSource = $authorRepo->getLastFiveAuthors();
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="">Články</a></li>
-                        <li><a class="dropdown-item" href="">Kategorie</a></li>
-                        <li><a class="dropdown-item" href="">Autoři</a></li>
+                        <li><a class="dropdown-item" href="../admin/articles.php">Články</a></li>
+                        <li><a class="dropdown-item" href="../admin/categories.php">Kategorie</a></li>
+                        <li><a class="dropdown-item" href="../admin/authors.php">Autoři</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">

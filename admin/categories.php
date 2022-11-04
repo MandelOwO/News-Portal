@@ -11,7 +11,6 @@ $tool = new Tools();
 
 ?>
 
-
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
@@ -21,13 +20,13 @@ $tool = new Tools();
 
     <!-- STYLE LINKS -->
     <?php $tool->importBootstrap(); ?>
+    <link rel="stylesheet" href="../source/styles/rwd-table.css">
     <link rel="stylesheet" href="../source/styles/style.css">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
-    <title>Neko admin | Dashboard</title>
+    <title>Neko admin | kategorie</title>
 </head>
 <body>
-
 
 <!-- NAVBAR -->
 <?php
@@ -36,36 +35,29 @@ require_once '../source/pages/navbar.php';
 ?>
 
 <main>
-
-    <nav class="admin-nav">
-        <a href="">
-            <button type="button" class="btn btn-bd-primary">Přidat článek</button>
-        </a>
-        <a href="">
-            <button type="button" class="btn btn-bd-primary">Přidat kategorii</button>
-        </a>
-        <a href="">
-            <button type="button" class="btn btn-bd-primary">Přidat autora</button>
-        </a>
-
-
-    </nav>
-
-    <section class="white-fill">
-        <div class="article-title">
-            <h1>Dashboard comming soon...</h1>
-        </div>
+    <section class="page-header white-font">
+        <h1>Administrace kategorií</h1>
     </section>
 
+    <div class="table-container">
+        <table class="rwd-table">
+            <tr>
+                <th>Název</th>
+                <th>Počet článků</th>
+                <th>Akce</th>
+            </tr>
+
+            <tr>
+                <td data-th="Název">Star Wars</td>
+                <td data-th="Počet článků">Adventure, Sci-fi</td>
+                <td data-th="Akce">1977</td>
+            </tr>
+
+        </table>
+    </div>
 
 </main>
 
-<!-- GO TO TOP BTN -->
-<div id="ToTopBtn"></div>
-<script>
-    $(function () {
-        $("#ToTopBtn").load("../source/ToTopBtn.html");
-    });
-</script>
+
 </body>
 </html>
