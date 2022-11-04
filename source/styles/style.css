@@ -290,6 +290,16 @@ article, .white-fill {
     border-color: var(--primary-font);
 }
 
+td a {
+    color: var(--primary-additional);
+    text-decoration: none;
+
+}
+
+td a:hover {
+    color: var(--secondary-aditional);
+}
+
 /* --- >>>>>>>>>> TABLET <<<<<<<<<< --- */
 @media screen and (min-width: 768px) {
     .admin-nav {
@@ -326,5 +336,11 @@ article, .white-fill {
         max-width: 1024px;
         margin: 20px auto;
     }
+
+    #article-admin-table {
+        max-width: none;
+        margin: 20px 5vw;
+    }
+
 }
 

@@ -13,10 +13,10 @@ $id = $_GET['id'];
 if ($from == 'categories' && $categoryRepo->checkDelete($id)) {
     $categoryRepo->delete($id);
 
-} else if ($from == 'articles' && $authorRepo->checkDelete($id)) {
+} else if ($from == 'articles') {
     $articleRepo->delete($id);
 
-} else if ($from == 'authors') {
+} else if ($from == 'authors' && $authorRepo->checkDelete($id)) {
     $authorRepo->delete($id);
 
 }
