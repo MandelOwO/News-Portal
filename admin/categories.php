@@ -62,11 +62,9 @@ require_once '../source/pages/navbar.php';
                                     data-bs-toggle="modal" data-bs-target="#exampleModal"
                                 <?php } ?>
                             >
-                                <!-- TODO link -->
                                 <img src="../source/icons/trash.svg" alt="smazat" class="table-icon">
                             </a>
-                            <a href="" type="button" class="btn btn-outline-dark btn-edit ">
-                                <!-- TODO link -->
+                            <a href="" type="button" class="btn btn-outline-dark btn-edit "> <!-- TODO link -->
                                 <img src="../source/icons/pen.svg" alt="upravit" class="table-icon">
                             </a>
                         </div>
@@ -75,7 +73,6 @@ require_once '../source/pages/navbar.php';
             <?php } ?>
         </table>
     </div>
-
 </main>
 
 <!-- Modal -->

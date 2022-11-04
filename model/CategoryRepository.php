@@ -111,6 +111,7 @@ class CategoryRepository extends BaseRepository
                 LEFT JOIN article_category ac ON ac.category_id = ca.id
             WHERE ca.id = :id
         ';
+
         $data = [
             ':id' => $id,
         ];
