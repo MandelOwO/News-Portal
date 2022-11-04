@@ -102,6 +102,30 @@ class CategoryRepository extends BaseRepository
         return $this->dbConn->selectAll($query);
     }
 
+    public function checkDelete($id)
+    {
+        $query = '
+            SELECT 
+                COUNT(ac.article_id) AS article_count
+            FROM category ca 
+                LEFT JOIN article_category ac ON ac.category_id = ca.id
+            WHERE ca.id = :id
+        ';
+        $data = [
+            ':id' => $id,
+        ];
+
+        $result = $this->dbConn->selectOne($query, $data);
+
+        if ($result['article_count'] == 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+
+    }
+
     protected function getTableName()
     {
         return 'category';

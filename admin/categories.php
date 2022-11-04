@@ -56,7 +56,8 @@ require_once '../source/pages/navbar.php';
                     <td data-th="Akce" class="action-column">
                         <div class="btn-group btn-group-sm table-edit-buttons" role="group"
                              aria-label="Small button group">
-                            <a href="" type="button" class="btn btn-outline-dark btn-delete"
+                            <a href="delete.php?from=categories&id=<?= $row['id'] ?>"
+                               type="button" class="btn btn-outline-dark btn-delete"
                                 <?php if ($row['article_count'] > 0) { ?>
                                     data-bs-toggle="modal" data-bs-target="#exampleModal"
                                 <?php } ?>
@@ -72,8 +73,6 @@ require_once '../source/pages/navbar.php';
                     </td>
                 </tr>
             <?php } ?>
-
-
         </table>
     </div>
 
