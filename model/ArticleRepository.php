@@ -8,8 +8,11 @@ class ArticleRepository extends BaseRepository
         $query = '
             SELECT * FROM article
                 INNER JOIN author ON author.id = article.author_id
+            WHERE published = 1
             ORDER BY created_at DESC
+ 
             LIMIT 5
+
         ';
         $stmt = $this->dbConn->selectAll($query);
 
@@ -39,7 +42,7 @@ class ArticleRepository extends BaseRepository
         $query = '
             SELECT * FROM article
                 INNER JOIN author ON author.id = article.author_id
-            WHERE article.id = :id
+            WHERE article.id = :id AND published = 1
 
         ';
         $data = [
@@ -58,7 +61,7 @@ class ArticleRepository extends BaseRepository
             FROM article ar
                 INNER JOIN article_category ac ON ac.article_id = ar.id
                 INNER JOIN author au ON au.id = ar.author_id
-            WHERE ac.category_id = :id
+            WHERE ac.category_id = :id AND published = 1
         ';
         $data = [
             ':id' => $categoryId,
@@ -73,7 +76,7 @@ class ArticleRepository extends BaseRepository
             SELECT *
             FROM article ar
                 INNER JOIN author au ON au.id = ar.author_id
-            WHERE ar.author_id = :id
+            WHERE ar.author_id = :id AND published = 1
         ';
         $data = [
             ':id' => $authorId,

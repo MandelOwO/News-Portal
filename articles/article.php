@@ -14,6 +14,8 @@ $article = $articleRepo->getArticleById($_GET['article_id']);
 
 if (empty($_GET['article_id']) || $article == null) {
     header('Location: ../index.php');
+} else if (!$article['published']) {
+    header('Location: not-available.php');
 }
 
 

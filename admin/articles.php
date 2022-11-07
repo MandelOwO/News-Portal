@@ -26,6 +26,7 @@ $tableData = $articleRepo->getAllArticles();
     <link rel="stylesheet" href="../source/styles/rwd-table.css">
     <link rel="stylesheet" href="../source/styles/style.css">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <!--    <script src="../source/scripts/article-modal.js"></script> -->
 
     <title>Neko admin | články</title>
 </head>
@@ -59,7 +60,13 @@ require_once '../source/pages/navbar.php';
                     <td data-th="Název"><?= $row['title'] ?></td>
                     <td data-th="Autor"><?= $row['author_name'] ?> <?= $row['author_surname'] ?></td>
                     <td data-th="Kategorie"><?= $categoryRepo->writeCategories($row['article_id']) ?></td>
-                    <td data-th="Zveřejněný">x</td>
+                    <td data-th="Zveřejněný">
+                        <?php if ($row['published']) { ?>
+                            <img src="../source/icons/check.svg" alt="ano" height="25">
+                        <?php } else { ?>
+                            <img src="../source/icons/times.svg" alt="ne" height="30">
+                        <?php } ?>
+                    </td>
                     <td data-th="Akce" class="action-column">
                         <div class="btn-group btn-group-sm table-edit-buttons" role="group"
                              aria-label="Small button group">
@@ -67,6 +74,12 @@ require_once '../source/pages/navbar.php';
                                type="button" class="btn btn-outline-dark btn-delete">
                                 <img src="../source/icons/trash.svg" alt="smazat" class="table-icon">
                             </a>
+                            <!--
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                   data-bs-target="#exampleModal">
+                               Launch demo modal
+                            </button>
+                            -->
                             <a href="" type="button" class="btn btn-outline-dark btn-edit "> <!-- TODO link -->
                                 <img src="../source/icons/pen.svg" alt="upravit" class="table-icon">
                             </a>
@@ -77,5 +90,40 @@ require_once '../source/pages/navbar.php';
         </table>
     </div>
 </main>
+
+<!-- Modal
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 </body>
+
+<script>
+    $('#glassAnimalsSong').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var song = button.data('song')
+        // Extract info from data-* attributes
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this);
+        $('#song').text(song);
+    })
+</script>
+-->
+
 </html>
