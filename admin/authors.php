@@ -69,7 +69,8 @@ require_once '../source/pages/navbar.php';
                             >
                                 <img src="../source/icons/trash.svg" alt="smazat" class="table-icon">
                             </a>
-                            <a href="" type="button" class="btn btn-outline-dark btn-edit "> <!-- TODO link -->
+                            <a href="author-editor.php?id=<?= $row['id'] ?>" type="button"
+                               class="btn btn-outline-dark btn-edit ">
                                 <img src="../source/icons/pen.svg" alt="upravit" class="table-icon">
                             </a>
                         </div>

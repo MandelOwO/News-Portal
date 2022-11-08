@@ -49,7 +49,7 @@ require_once '../source/pages/navbar.php';
             <?php foreach ($authors as $author) { ?>
                 <li>
                     <a href="articles.php?author_id=<?= $author['id'] ?>">
-                        <img src="<?= $author['profile_photo'] ?>" alt="">
+                        <img src="<?= $author['profile_photo'] ?>" alt="" class="author-photo">
                         <?= $author['name'] ?>
                         <?= $author['surname'] ?>
                     </a>

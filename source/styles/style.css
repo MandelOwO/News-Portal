@@ -216,7 +216,7 @@ article, .white-fill {
 }
 
 /* --- AUTHOR LIST --- */
-.author-list img {
+.author-photo {
     height: 4rem;
     border-radius: 50%;
 }
@@ -332,11 +332,44 @@ td a:hover {
 .editor > form {
     display: grid;
     grid-template-columns: 15% 85%;
+    row-gap: 1rem;
 }
 
 .btn-save {
     margin-top: 1rem;
     width: 5rem;
+    grid-column: 1/2;
+}
+
+@media screen and (max-width: 767px) {
+    .editor > form {
+        display: unset;
+    }
+
+    .editor label {
+        margin-top: 1rem;
+    }
+
+    .photo-tooltip {
+        grid-column: unset;
+    }
+}
+
+.photo-tooltip {
+    grid-column: 2/ 3;
+    color: var(--secondary-font);
+}
+
+.load-photo {
+    color: var(--primary-additional);
+}
+
+.load-photo:hover {
+    color: var(--secondary-aditional);
+}
+
+.author-editor-header h1 {
+    margin-bottom: 20px;
 }
 
 /* --- >>>>>>>>>> TABLET <<<<<<<<<< --- */
