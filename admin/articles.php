@@ -56,7 +56,7 @@ require_once '../source/pages/navbar.php';
 
             <?php foreach ($tableData as $row) { ?>
                 <tr>
-                    <td data-th="Datum vytvoření"><?= $tool->convertDate($row['date']) ?></td>
+                    <td data-th="Dat. vytvoř."><?= $tool->convertDate($row['date']) ?></td>
                     <td data-th="Název"><?= $row['title'] ?></td>
                     <td data-th="Autor"><?= $row['author_name'] ?> <?= $row['author_surname'] ?></td>
                     <td data-th="Kategorie"><?= $categoryRepo->writeCategories($row['article_id']) ?></td>

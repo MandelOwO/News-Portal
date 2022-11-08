@@ -38,13 +38,13 @@ require_once '../source/pages/navbar.php';
 <main>
 
     <nav class="admin-nav">
-        <a href="">
+        <a href="article-editor.php">
             <button type="button" class="btn btn-bd-primary">Přidat článek</button>
         </a>
-        <a href="">
+        <a href="category-editor.php">
             <button type="button" class="btn btn-bd-primary">Přidat kategorii</button>
         </a>
-        <a href="">
+        <a href="author-editor.php">
             <button type="button" class="btn btn-bd-primary">Přidat autora</button>
         </a>
 
