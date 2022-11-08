@@ -39,6 +39,9 @@ require_once '../source/pages/navbar.php';
 <main>
     <section class="page-header white-font">
         <h1>Administrace autorů</h1>
+        <a href="author-editor.php">
+            <button type="button" class="btn btn-bd-primary">Přidat autora</button>
+        </a>
     </section>
 
     <div class="table-container">

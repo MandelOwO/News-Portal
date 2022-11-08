@@ -39,9 +39,12 @@ require_once '../source/pages/navbar.php';
 <main>
     <section class="page-header white-font">
         <h1>Administrace kategorií</h1>
+        <a href="category-editor.php">
+            <button type="button" class="btn btn-bd-primary">Přidat kategorii</button>
+        </a>
     </section>
 
-    <div class="table-container">
+    <section class="table-container">
         <table class="rwd-table">
             <tr>
                 <th>Název</th>
@@ -64,7 +67,8 @@ require_once '../source/pages/navbar.php';
                             >
                                 <img src="../source/icons/trash.svg" alt="smazat" class="table-icon">
                             </a>
-                            <a href="" type="button" class="btn btn-outline-dark btn-edit "> <!-- TODO link -->
+                            <a href="category-editor.php?id=<?= $row['id'] ?>" type="button"
+                               class="btn btn-outline-dark btn-edit ">
                                 <img src="../source/icons/pen.svg" alt="upravit" class="table-icon">
                             </a>
                         </div>
@@ -72,7 +76,7 @@ require_once '../source/pages/navbar.php';
                 </tr>
             <?php } ?>
         </table>
-    </div>
+    </section>
 </main>
 
 <!-- Modal -->

@@ -9,6 +9,11 @@ $authorRepo = new AuthorRepository($db);
 $categoryRepo = new CategoryRepository($db);
 $tool = new Tools();
 
+$category = false;
+if (!empty($_GET['id'])) {
+    $category = $categoryRepo->getById($_GET['id']);
+}
+
 ?>
 
 <html lang="cs">
@@ -31,6 +36,31 @@ $tool = new Tools();
 $page = 'admin';
 require_once '../source/pages/navbar.php';
 ?>
+
+<main class="editor-page">
+
+    <section class="page-header white-font">
+        <h1>
+            <?php if ($category) { ?>
+                Upravit kategorii "<?= $category['name'] ?>"
+            <?php } else { ?>
+                Přidat kategorii
+            <?php } ?>
+        </h1>
+        <a href="categories.php">
+            <button type="button" class="btn btn-bd-primary">Zpět na výpis</button>
+        </a>
+    </section>
+
+    <section class="editor">
+        <form action="" method="post">
+            <label for="name">Název: </label>
+            <input type="text" name="name" id="name" class="text-input"
+                   value="<?= $category ? $category['name'] : '' ?>">
+            <button type="submit" class="btn btn-bd-primary btn-save">Uložit</button>
+        </form>
+    </section>
+</main>
 
 
 </body>

@@ -41,6 +41,9 @@ require_once '../source/pages/navbar.php';
 <main id="article-admin-table">
     <section class="page-header white-font">
         <h1>Administrace článků</h1>
+        <a href="article-editor.php">
+            <button type="button" class="btn btn-bd-primary">Přidat článek</button>
+        </a>
     </section>
 
     <div class="table-container ">
