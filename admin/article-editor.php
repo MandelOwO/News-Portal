@@ -7,10 +7,25 @@ App::init();
 $db = new Database();
 $authorRepo = new AuthorRepository($db);
 $categoryRepo = new CategoryRepository($db);
+$articleRepo = new ArticleRepository($db);
 $tool = new Tools();
 
+$article = false;
+if (!empty($_GET['id'])) {
+    $article = $articleRepo->getArticleById($_GET['id']);
+    $articleCategories = $categoryRepo->getCategoriesForArticle($_GET['id']);
+}
+
+$allAuthors = $authorRepo->getAll();
+$allCategories = $categoryRepo->getAll();
+
+var_dump($articleCategories);
+echo '<br>';
+echo '<br>';
+var_dump($allCategories);
 ?>
 
+<!DOCTYPE html>
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
@@ -21,6 +36,9 @@ $tool = new Tools();
     <!-- STYLE LINKS -->
     <?php $tool->importBootstrap(); ?>
     <link rel="stylesheet" href="../source/styles/style.css">
+    <script src="https://cdn.tiny.cloud/1/j9xmhw8bx062069njjeewsmov289hxxtzlcg26mdvr10jkdi/tinymce/6/tinymce.min.js"
+            referrerpolicy="origin"></script>
+    <script src="../source/scripts/tinymce.js"></script>
 
     <title>Neko admin | article editor</title>
 </head>
@@ -32,6 +50,61 @@ $page = 'admin';
 require_once '../source/pages/navbar.php';
 ?>
 
+<main class="editor-page">
+
+    <section class="page-header white-font author-editor-header">
+        <h1>
+            <?php if ($article) { ?>
+                Upravit článek
+            <?php } else { ?>
+                Přidat článek
+            <?php } ?>
+        </h1>
+        <a href="articles.php">
+            <button type="button" class="btn btn-bd-primary">Zpět na výpis</button>
+        </a>
+    </section>
+
+    <section class="editor">
+        <form action="" method="post" id="article-form">
+
+            <label for="author" class="label-header">Autor: </label>
+            <select name="author" id="author" class="text-input select-box" required>
+                <option value="" hidden>-- Vyberte autora --</option>
+                <?php foreach ($allAuthors as $author) { ?>
+                    <option value="<?= $author['id'] ?>" <?= $article && $article['author_id'] == $author['id'] ? 'selected' : '' ?>><?= $author['name'] ?> <?= $author['surname'] ?></option>
+                <?php } ?>
+            </select>
+
+            <label for="title" class="label-header">Titulek: </label>
+            <textarea name="title" id="title" class="text-input"
+            ><?= $article ? $article['title'] : '' ?></textarea>
+
+
+            <label for="perex" class="label-header">Perex: </label>
+            <textarea name="perex" id="perex" class="text-input"
+            ><?= $article ? $article['perex'] : '' ?></textarea>
+
+            <label for="article-text" class="label-header">Text článku:</label>
+            <textarea name="article-text" id="article-text"
+                      placeholder="Jste svědky zrození úžasného článku!"
+            ><?= $article ? $article['text'] : '' ?></textarea>
+
+            <label class="label-header">Kategorie: </label>
+            <div class="categories-selection">
+                <?php foreach ($allCategories as $category) { ?>
+                    <div>
+                        <label for="<?= $category['id'] ?>" class="category-label"><?= $category['name'] ?></label>
+                        <input type="checkbox" name="category[]" id="<?= $category['id'] ?>"
+                               value="<?= $category['id'] ?>" class="checkbox"
+                            <?= $article && in_array($category, $articleCategories) ? 'checked' : '' ?>>
+                        <!-- TODO dodělat checkování kategorií -->
+                    </div>
+                <?php } ?>
+            </div>
+        </form>
+    </section>
+</main>
 
 </body>
 </html>

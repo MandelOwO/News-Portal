@@ -11,7 +11,7 @@ abstract class BaseRepository
 
     public function getAll()
     {
-        $sql = 'SELECT * FROM ' . $this->getTableName();
+        $sql = 'SELECT * FROM ' . $this->getTableName() . ' ORDER BY name';
 
         return $this->dbConn->selectAll($sql);
     }

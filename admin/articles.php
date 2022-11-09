@@ -83,7 +83,8 @@ require_once '../source/pages/navbar.php';
                                Launch demo modal
                             </button>
                             -->
-                            <a href="" type="button" class="btn btn-outline-dark btn-edit "> <!-- TODO link -->
+                            <a href="article-editor.php?id=<?= $row['article_id'] ?>" type="button"
+                               class="btn btn-outline-dark btn-edit ">
                                 <img src="../source/icons/pen.svg" alt="upravit" class="table-icon">
                             </a>
                         </div>
