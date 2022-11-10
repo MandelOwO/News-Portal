@@ -10,14 +10,13 @@
 - - Kde se objeví název kategorie (ve výpisu, v detailu článku atd.) bude možné prokliknout na články z kategorie
 - Grafika nemusí být kompletní
 
-TODO - vyexportovat databázi!
 
 2. checkpoint
-TODO - Administrace všeho
-TODO - - Přidávání/úprava/mazání článků + WYSIWYG editor
-TODO - - Přidávání/úprava/mazání autorů
-TODO - - Přidávání/úprava/mazání kategorií
-TODO - Zbývající prolinkování (odkaz na editaci/smazání z detailu článku)
+ - Administrace všeho
+ - - Přidávání/úprava/mazání článků + WYSIWYG editor
+ - - Přidávání/úprava/mazání autorů
+ - - Přidávání/úprava/mazání kategorií
+ - Zbývající prolinkování (odkaz na editaci/smazání z detailu článku)
 - "Lidská" chybová zpráva při pokusu o smazání kategorie/autora s články
-TODO - Dokončená grafika
+ - Dokončená grafika
 TODO - Případné extra úkoly
