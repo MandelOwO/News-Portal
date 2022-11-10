@@ -18,7 +18,6 @@
     --secondary-font: #D6D9C5;
     --primary-additional: #A65C41;
     --secondary-aditional: #8C2C23;
-
 }
 
 body {
@@ -51,6 +50,10 @@ main {
     --bs-btn-active-color: var(--secondary-font);
     --bs-btn-active-bg: var(--secondary-aditional);
     --bs-btn-active-border-color: var(--secondary-aditional);
+}
+
+a{
+    outline:  none;
 }
 
 /*TOP BUTTON*/

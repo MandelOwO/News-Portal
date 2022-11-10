@@ -24,10 +24,6 @@ if (!empty($_GET['id'])) {
 $allAuthors = $authorRepo->getAll();
 $allCategories = $categoryRepo->getAll();
 
-
-
-
-
 ?>
 
 <!DOCTYPE html>
