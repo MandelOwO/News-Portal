@@ -4,6 +4,8 @@ require_once '../App.php';
 require_once '../tools/Tools.php';
 App::init();
 
+
+/* DELETE */
 $db = new Database();
 $authorRepo = new AuthorRepository($db);
 $categoryRepo = new CategoryRepository($db);
@@ -13,6 +15,25 @@ $category = false;
 if (!empty($_GET['id'])) {
     $category = $categoryRepo->getById($_GET['id']);
 }
+
+/* SAVE */
+
+if (isset($_POST) && !empty($_POST)){
+
+    $name = trim($_POST['name']);
+
+    if (!empty($name) && !$category)
+    {
+        $categoryRepo->insert($name);
+        header('Location: categories.php');
+    } else if(!empty($name) && $category){
+        $categoryRepo->update($category['id'], $name);
+        header('Location: categories.php');
+    }
+}
+
+
+
 
 ?>
 
@@ -54,9 +75,11 @@ require_once '../source/pages/navbar.php';
 
     <section class="editor">
         <form action="" method="post">
+
             <label for="name">Název: </label>
-            <input type="text" name="name" id="name" class="text-input"
+            <input type="text" name="name" id="name" class="text-input" required
                    value="<?= $category ? $category['name'] : '' ?>">
+
             <button type="submit" class="btn btn-bd-primary btn-save">Uložit</button>
         </form>
     </section>

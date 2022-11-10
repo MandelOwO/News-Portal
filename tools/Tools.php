@@ -19,4 +19,5 @@ class Tools
             crossorigin="anonymous"></script>');
     }
 
+
 }

@@ -123,9 +123,37 @@ class CategoryRepository extends BaseRepository
         } else {
             return false;
         }
-
-
     }
+
+    public function insert($categoryName)
+    {
+        $query = '
+            INSERT INTO category SET 
+                name = :name
+        ';
+        $data = [
+          ':name' => $categoryName,
+        ];
+
+        return $this->dbConn->insert($query, $data);
+    }
+
+    public function update($categoryId, $categoryName)
+    {
+        $query = '
+            UPDATE category SET 
+                name = :name 
+            WHERE id = :categoryId 
+        ';
+
+        $data = [
+            ':categoryId' => $categoryId,
+            ':name' => $categoryName,
+        ];
+
+        return $this->dbConn->update($query, $data);
+    }
+
 
     protected function getTableName()
     {

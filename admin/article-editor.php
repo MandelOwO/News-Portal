@@ -10,6 +10,7 @@ $categoryRepo = new CategoryRepository($db);
 $articleRepo = new ArticleRepository($db);
 $tool = new Tools();
 
+/* LOAD */
 $article = false;
 if (!empty($_GET['id'])) {
     $article = $articleRepo->getArticleById($_GET['id']);
@@ -22,6 +23,8 @@ if (!empty($_GET['id'])) {
 
 $allAuthors = $authorRepo->getAll();
 $allCategories = $categoryRepo->getAll();
+
+
 
 
 
