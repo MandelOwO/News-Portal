@@ -24,6 +24,37 @@ if (!empty($_GET['id'])) {
 $allAuthors = $authorRepo->getAll();
 $allCategories = $categoryRepo->getAll();
 
+/* SAVE */
+if (isset($_POST) && !empty($_POST)) {
+    $title = trim($_POST['title']);
+    $perex = trim($_POST['perex']);
+    $text = $_POST['article-text'];
+    $image = $_POST['photo'];
+    $author_id = $_POST['author'];
+
+    $published = 0;
+    if (isset($_POST['published']) && $_POST['published'] == 1) {
+        $published = 1;
+    }
+
+    $categories = [];
+    if (isset($_POST['category'])) {
+        $categories = $_POST['category'];
+    }
+
+
+    if (!$article) {
+        $lastId = $articleRepo->insert($title, $perex, $text, $image, $author_id, $published);
+        $categoryRepo->updateCategoriesForArticle($lastId, $categories);
+    } else {
+        $articleRepo->update($_GET['id'], $title, $perex, $text, $image, $author_id, $published);
+        $categoryRepo->updateCategoriesForArticle($_GET['id'], $categories);
+    }
+    header('Location: articles.php');
+
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -67,9 +98,11 @@ require_once '../source/pages/navbar.php';
     </section>
 
     <section class="editor">
+
         <form action="" method="post" id="article-form">
 
             <label for="author" class="label-header">Autor: </label>
+
             <select name="author" id="author" class="text-input select-box" required>
                 <option value="" hidden>-- Vyberte autora --</option>
                 <?php foreach ($allAuthors as $author) { ?>
@@ -89,7 +122,7 @@ require_once '../source/pages/navbar.php';
             <label for="article-text" class="label-header">Text článku:</label>
             <textarea name="article-text" id="article-text" required
                       placeholder="Jste svědky zrození úžasného článku!"
-            ><?= $article ? $article['text'] : '' ?></textarea>
+            > <?= $article ? $article['text'] : '' ?></textarea>
 
             <label for="photo" class="label-header">Fotka: </label>
             <input type="url" name="photo" id="photo" class="text-input"
@@ -101,14 +134,23 @@ require_once '../source/pages/navbar.php';
                     <div>
 
                         <label for="<?= $category['id'] ?>" class="category-label container"><?= $category['name'] ?>
-                        <input type="checkbox" name="category[]" id="<?= $category['id'] ?>"
-                               value="<?= $category['id'] ?>" class="checkbox"
-                            <?= $article && in_array($category['id'], $articleCategoriesIds) ? 'checked' : '' ?>>
-                        <span class="checkmark"></span>
+                            <input type="checkbox" name="category[]" id="<?= $category['id'] ?>"
+                                   value="<?= $category['id'] ?>" class="checkbox"
+                                <?= $article && in_array($category['id'], $articleCategoriesIds) ? 'checked' : '' ?>>
+                            <span class="checkmark"></span>
                         </label>
                     </div>
                 <?php } ?>
             </div>
+
+            <label class="label-header">Zveřejněný: </label>
+
+            <label class="container category-label" for="published">Ano
+                <input type="checkbox" name="published" id="published"
+                       value="1" <?= $article && $article['published'] == 1 ? 'checked' : '' ?>>
+                <span class="checkmark"></span>
+            </label>
+
 
             <button type="submit" class="btn btn-bd-primary btn-save">Uložit</button>
         </form>
