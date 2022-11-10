@@ -14,15 +14,17 @@ $article = false;
 if (!empty($_GET['id'])) {
     $article = $articleRepo->getArticleById($_GET['id']);
     $articleCategories = $categoryRepo->getCategoriesForArticle($_GET['id']);
+
+    $articleCategoriesIds = array_map(function ($cat) {
+        return $cat['category_id'];
+    }, $articleCategories);
 }
 
 $allAuthors = $authorRepo->getAll();
 $allCategories = $categoryRepo->getAll();
 
-var_dump($articleCategories);
-echo '<br>';
-echo '<br>';
-var_dump($allCategories);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -77,31 +79,39 @@ require_once '../source/pages/navbar.php';
             </select>
 
             <label for="title" class="label-header">Titulek: </label>
-            <textarea name="title" id="title" class="text-input"
+            <textarea name="title" id="title" class="text-input" required
             ><?= $article ? $article['title'] : '' ?></textarea>
 
 
             <label for="perex" class="label-header">Perex: </label>
-            <textarea name="perex" id="perex" class="text-input"
+            <textarea name="perex" id="perex" class="text-input" required
             ><?= $article ? $article['perex'] : '' ?></textarea>
 
             <label for="article-text" class="label-header">Text článku:</label>
-            <textarea name="article-text" id="article-text"
+            <textarea name="article-text" id="article-text" required
                       placeholder="Jste svědky zrození úžasného článku!"
             ><?= $article ? $article['text'] : '' ?></textarea>
+
+            <label for="photo" class="label-header">Fotka: </label>
+            <input type="url" name="photo" id="photo" class="text-input"
+                   value="<?= $article ? $article['image'] : '' ?>">
 
             <label class="label-header">Kategorie: </label>
             <div class="categories-selection">
                 <?php foreach ($allCategories as $category) { ?>
                     <div>
-                        <label for="<?= $category['id'] ?>" class="category-label"><?= $category['name'] ?></label>
+
+                        <label for="<?= $category['id'] ?>" class="category-label container"><?= $category['name'] ?>
                         <input type="checkbox" name="category[]" id="<?= $category['id'] ?>"
                                value="<?= $category['id'] ?>" class="checkbox"
-                            <?= $article && in_array($category, $articleCategories) ? 'checked' : '' ?>>
-                        <!-- TODO dodělat checkování kategorií -->
+                            <?= $article && in_array($category['id'], $articleCategoriesIds) ? 'checked' : '' ?>>
+                        <span class="checkmark"></span>
+                        </label>
                     </div>
                 <?php } ?>
             </div>
+
+            <button type="submit" class="btn btn-bd-primary btn-save">Uložit</button>
         </form>
     </section>
 </main>
