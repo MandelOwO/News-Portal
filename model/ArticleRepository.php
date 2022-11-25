@@ -7,16 +7,9 @@ class ArticleRepository extends BaseRepository
     {
         $query = '
             SELECT                 
-                article.id as id,
-                author_id,
-                title,
-                perex,
-                text,
-                created_at,
-                image,
+                article.*,
                 name,
-                surname,
-                published 
+                surname
             FROM article
                 INNER JOIN author ON author.id = article.author_id
             WHERE published = 1
@@ -52,16 +45,9 @@ class ArticleRepository extends BaseRepository
     {
         $query = '
             SELECT 
-                article.id as id,
-                author_id,
-                title,
-                perex,
-                text,
-                created_at,
-                image,
+                article.*,
                 name,
-                surname,
-                published 
+                surname
             FROM article
                 INNER JOIN author ON author.id = article.author_id
             WHERE article.id = :id
@@ -79,7 +65,10 @@ class ArticleRepository extends BaseRepository
     public function getArticlesByCategory($categoryId)
     {
         $query = '
-            SELECT *
+            SELECT                 
+                ar.*,
+                name,
+                surname
             FROM article ar
                 INNER JOIN article_category ac ON ac.article_id = ar.id
                 INNER JOIN author au ON au.id = ar.author_id
@@ -95,7 +84,10 @@ class ArticleRepository extends BaseRepository
     public function getArticlesByAuthor($authorId)
     {
         $query = '
-            SELECT *
+            SELECT 
+                ar.*,
+                name,
+                surname
             FROM article ar
                 INNER JOIN author au ON au.id = ar.author_id
             WHERE ar.author_id = :id AND published = 1

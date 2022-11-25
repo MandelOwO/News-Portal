@@ -120,9 +120,9 @@ require_once '../source/pages/navbar.php';
             ><?= $article ? $article['perex'] : '' ?></textarea>
 
             <label for="article-text" class="label-header">Text článku:</label>
-            <textarea name="article-text" id="article-text" required
+            <textarea name="article-text" id="article-text"
                       placeholder="Jste svědky zrození úžasného článku!"
-            > <?= $article ? $article['text'] : '' ?></textarea>
+            ><?= $article ? $article['text'] : '' ?></textarea>
 
             <label for="photo" class="label-header">Fotka: </label>
             <input type="url" name="photo" id="photo" class="text-input"
@@ -132,7 +132,6 @@ require_once '../source/pages/navbar.php';
             <div class="categories-selection">
                 <?php foreach ($allCategories as $category) { ?>
                     <div>
-
                         <label for="<?= $category['id'] ?>" class="category-label container"><?= $category['name'] ?>
                             <input type="checkbox" name="category[]" id="<?= $category['id'] ?>"
                                    value="<?= $category['id'] ?>" class="checkbox"

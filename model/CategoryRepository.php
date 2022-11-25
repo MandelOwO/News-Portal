@@ -118,11 +118,13 @@ class CategoryRepository extends BaseRepository
 
         $result = $this->dbConn->selectOne($query, $data);
 
-        if ($result['article_count'] == 0) {
+        return $result['article_count'] == 0;
+
+        /*if ($result['article_count'] == 0) {
             return true;
         } else {
             return false;
-        }
+        }*/
     }
 
     public function insert($categoryName)
