@@ -1,10 +1,8 @@
 <?php
-
-
 $menuCategorySource = $categoryRepo->getLastFiveCategories();
 $menuAuthorSource = $authorRepo->getLastFiveAuthors();
 
-
+session_start();
 ?>
 
 
@@ -81,17 +79,17 @@ $menuAuthorSource = $authorRepo->getLastFiveAuthors();
                         <li><a class="dropdown-item" href="../admin/authors.php">Autoři</a></li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link <?= $page == 'login' ? 'active' : '' ?> "
-                       href="">Přihlášení</a>
-                </li>
             </ul>
-
-            <form class="d-flex search" role="search">
-                <input class="form-control me-2" type="search" placeholder="Vyhledat na webu" aria-label="Search"
-                       name="search">
-                <button class="btn btn-bd-primary" type="submit">Vyhledat</button>  <!-- TODO search -->
-            </form>
+            <span class="navbar-text">
+                <?php if (isset($_SESSION['user'])) { ?>
+                    <a class="nav-link "
+                       href="">Jméno</a> |
+                     <a class="nav-link login-link "
+                        href="">Odhlásit </a>
+                <?php } else { ?>
+                    <a href="" class="nav-link login-link">Přihlásit se</a>
+                <?php } ?>
+            </span>
         </div>
     </div>
 </nav>
