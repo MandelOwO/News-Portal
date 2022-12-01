@@ -18,7 +18,6 @@ if ($from == 'categories' && $categoryRepo->checkDelete($id)) {
 
 } else if ($from == 'authors' && $authorRepo->checkDelete($id)) {
     $authorRepo->delete($id);
-
 }
 
 header('Location: ' . $from . '.php');

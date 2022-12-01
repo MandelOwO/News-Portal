@@ -18,7 +18,6 @@
     --secondary-font: #D6D9C5;
     --primary-additional: #A65C41;
     --secondary-aditional: #8C2C23;
-
 }
 
 body {
@@ -51,6 +50,10 @@ main {
     --bs-btn-active-color: var(--secondary-font);
     --bs-btn-active-bg: var(--secondary-aditional);
     --bs-btn-active-border-color: var(--secondary-aditional);
+}
+
+a {
+    outline: none;
 }
 
 /*TOP BUTTON*/
@@ -410,6 +413,64 @@ td a:hover {
 }
 
 
+/* --- >>>>>>>>>> TABLET <<<<<<<<<< --- */
+@media screen and (min-width: 768px) {
+    .admin-nav {
+        flex-direction: row;
+    }
+
+
+    .categories-selection {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+
+/* --- >>>>>>>>>> DESKTOP <<<<<<<<<< --- */
+@media screen and (min-width: 1024px) {
+
+    main {
+        max-width: 1024px;
+        margin: 20px auto;
+    }
+
+    header {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .header-logo img {
+        max-height: 100px;
+        margin: 0 20px 0 0;
+    }
+
+    header menu {
+        display: flex;
+        flex-direction: row;
+        padding: 0;
+        margin: 0;
+    }
+
+    menu > li {
+        border: none;
+        width: unset;
+    }
+
+
+    #article-admin-table {
+        max-width: none;
+        margin: 20px 5vw;
+    }
+
+    .categories-selection {
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+}
+
+
+/* CUSTOM CHECKBOX */
+
 /* Customize the label (the container) */
 .container {
     display: block;
@@ -467,8 +528,8 @@ td a:hover {
 
 /* Style the checkmark/indicator */
 .container .checkmark:after {
-    left: 9px;
-    top: 5px;
+    left: 10px;
+    top: 7px;
     width: 5px;
     height: 10px;
     border: solid white;
@@ -476,60 +537,5 @@ td a:hover {
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
-}
-
-/* --- >>>>>>>>>> TABLET <<<<<<<<<< --- */
-@media screen and (min-width: 768px) {
-    .admin-nav {
-        flex-direction: row;
-    }
-
-
-    .categories-selection {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-
-
-/* --- >>>>>>>>>> DESKTOP <<<<<<<<<< --- */
-@media screen and (min-width: 1024px) {
-
-    main {
-        max-width: 1024px;
-        margin: 20px auto;
-    }
-
-    header {
-        display: flex;
-        flex-direction: row;
-    }
-
-    .header-logo img {
-        max-height: 100px;
-        margin: 0 20px 0 0;
-    }
-
-    header menu {
-        display: flex;
-        flex-direction: row;
-        padding: 0;
-        margin: 0;
-    }
-
-    menu > li {
-        border: none;
-        width: unset;
-    }
-
-
-    #article-admin-table {
-        max-width: none;
-        margin: 20px 5vw;
-    }
-
-    .categories-selection {
-        grid-template-columns: repeat(6, 1fr);
-    }
-
 }
 

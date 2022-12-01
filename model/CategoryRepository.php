@@ -118,11 +118,13 @@ class CategoryRepository extends BaseRepository
 
         $result = $this->dbConn->selectOne($query, $data);
 
-        if ($result['article_count'] == 0) {
+        return $result['article_count'] == 0;
+
+        /*if ($result['article_count'] == 0) {
             return true;
         } else {
             return false;
-        }
+        }*/
     }
 
     public function insert($categoryName)
@@ -132,7 +134,7 @@ class CategoryRepository extends BaseRepository
                 name = :name
         ';
         $data = [
-          ':name' => $categoryName,
+            ':name' => $categoryName,
         ];
 
         return $this->dbConn->insert($query, $data);
@@ -152,6 +154,47 @@ class CategoryRepository extends BaseRepository
         ];
 
         return $this->dbConn->update($query, $data);
+    }
+
+    public function updateCategoriesForArticle($articleId, $categories = [])
+    {
+        /* DELETE */
+        $delQuery = '
+            DELETE FROM article_category WHERE article_id = :articleId
+        ';
+        $delData = [
+            ':articleId' => $articleId,
+        ];
+        $this->deleteFromArticleCategory($delQuery, $delData);
+
+        /* INSERT */
+
+        foreach ($categories as $category) {
+            $insertQuery = '
+                INSERT INTO article_category SET 
+                     article_id = :article_id,
+                     category_id = :category_id
+
+            ';
+
+            $insertData = [
+                ':article_id' => $articleId,
+                ':category_id' => $category,
+            ];
+
+            $this->insertIntoArticleCategory($insertQuery, $insertData);
+        }
+
+    }
+
+    public function deleteFromArticleCategory($query, $data)
+    {
+        $this->dbConn->delete($query, $data);
+    }
+
+    public function insertIntoArticleCategory($query, $data)
+    {
+        $this->dbConn->insert($query, $data);
     }
 
 

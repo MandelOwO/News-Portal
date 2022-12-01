@@ -63,6 +63,44 @@ class AuthorRepository extends BaseRepository
         }
     }
 
+    public function insert($name, $surname, $profile_photo)
+    {
+        $query = '
+            INSERT INTO author SET
+               name = :name,
+               surname = :surname,
+               profile_photo = :profile_photo
+        ';
+
+        $data = [
+          ':name' => $name,
+          ':surname' => $surname,
+          ':profile_photo' => $profile_photo,
+        ];
+
+        return $this->dbConn->insert($query, $data);
+    }
+
+    public function update($id, $name, $surname, $profile_photo)
+    {
+        $query = '
+            UPDATE author SET
+               name = :name,
+               surname = :surname,
+               profile_photo = :profile_photo
+            WHERE id = :id
+        ';
+
+        $data = [
+            ':name' => $name,
+            ':surname' => $surname,
+            ':profile_photo' => $profile_photo,
+            ':id' => $id
+        ];
+
+        return $this->dbConn->update($query, $data);
+    }
+
     protected function getTableName()
     {
         return 'author';

@@ -5,12 +5,13 @@ require_once '../tools/Tools.php';
 App::init();
 
 
-/* DELETE */
+
 $db = new Database();
 $authorRepo = new AuthorRepository($db);
 $categoryRepo = new CategoryRepository($db);
 $tool = new Tools();
 
+/* LOAD */
 $category = false;
 if (!empty($_GET['id'])) {
     $category = $categoryRepo->getById($_GET['id']);
@@ -31,9 +32,6 @@ if (isset($_POST) && !empty($_POST)){
         header('Location: categories.php');
     }
 }
-
-
-
 
 ?>
 
