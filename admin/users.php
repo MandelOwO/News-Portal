@@ -48,6 +48,7 @@ require_once '../source/pages/navbar.php';
                 <th>Příjmení</th>
                 <th>Jméno</th>
                 <th>Email</th>
+                <th>Role</th>
                 <th>Stav</th>
                 <th>Akce</th>
             </tr>
@@ -57,6 +58,7 @@ require_once '../source/pages/navbar.php';
                     <td data-th="Příjmení"><?= $row['surname'] ?></td>
                     <td data-th="Jméno"><?= $row['name'] ?></td>
                     <td data-th="Email"><?= $row['mail'] ?></td>
+                    <td data-th="Role"><?= $row['role'] ?></td>
                     <td data-th="Zveřejněný">
                         <?php if ($row['active']) { ?>
                             <img src="../source/icons/check.svg" alt="ano" height="25">

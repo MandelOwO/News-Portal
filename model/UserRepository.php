@@ -61,6 +61,36 @@ class UserRepository extends BaseRepository
         return $this->dbConn->selectOne($sql, $params);
     }
 
+    public function insert(string $mail, string $name, string $surname, $role, $active)
+    {
+
+    }
+
+    public function update($id, string $mail, string $name, string $surname, $role, $active)
+    {
+        $sql = '
+            UPDATE users SET
+                              mail = :mail,
+                              name = :name,
+                              surname = :surname,
+                              role = :role,
+                              active = :active
+            WHERE id = :id
+        ';
+
+        $params = [
+            ':mail' => $mail,
+            ':name' => $name,
+            ':surname' => $surname,
+            ':role' => $role,
+            ':active' => $active,
+            ':id' => $id
+        ];
+
+        return $this->dbConn->update($sql, $params);
+
+    }
+
 
     protected function getTableName(): string
     {

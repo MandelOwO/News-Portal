@@ -364,7 +364,7 @@ td a:hover {
 .editor > form {
     display: grid;
     grid-template-columns: 15% 85%;
-    row-gap: 1rem;
+    /*row-gap: 1rem;*/
 }
 
 #article-form {
@@ -479,6 +479,10 @@ td a:hover {
 
     .categories-selection {
         grid-template-columns: repeat(4, 1fr);
+    }
+
+    .editor > form {
+        row-gap: 1rem;
     }
 }
 
