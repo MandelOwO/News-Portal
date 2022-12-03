@@ -1,5 +1,6 @@
 <?php
 
+
 require_once '../tools/access-editor.php';
 
 require_once '../App.php';
@@ -21,12 +22,12 @@ if ($from == 'categories' && $categoryRepo->checkDelete($id)) {
     $articleRepo->delete($id);
 
 } else if ($from == 'authors' && $authorRepo->checkDelete($id)) {
+
     if ($_SESSION['user']['role'] == 'admin'){
         $authorRepo->delete($id);
     }
 
-
-} else if ($from == 'users' && $authorRepo->checkDelete($id)) {
+} else if ($from == 'users') {
     if ($_SESSION['user']['role'] == 'admin'){
         $userRepo->delete($id);
     }
