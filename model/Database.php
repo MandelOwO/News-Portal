@@ -13,7 +13,7 @@ class Database
     {
 //        $connString = sprintf('mysql:host=%s;dbname=%s', self::HOST, self::DBNAME);
 
-        $this->conn = new PDO('mysql:host=' . self::HOST . ';dbname=' . self::DBNAME ,
+        $this->conn = new PDO('mysql:host=' . self::HOST . ';dbname=' . self::DBNAME,
             self::USER,
             self::PASS, [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
@@ -27,14 +27,14 @@ class Database
     {
         $stmt = $this->execute($sql, $params);
 
-        return $stmt->fetchAll();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function selectOne($sql, $params)
     {
         $stmt = $this->execute($sql, $params);
 
-        return $stmt->fetch();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     // insert

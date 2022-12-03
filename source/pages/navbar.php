@@ -1,4 +1,11 @@
 <?php
+
+/**
+ * @var  CategoryRepository $categoryRepo
+ * @var AuthorRepository $authorRepo
+ * @var string $page
+ */
+
 $menuCategorySource = $categoryRepo->getLastFiveCategories();
 $menuAuthorSource = $authorRepo->getLastFiveAuthors();
 
@@ -80,16 +87,23 @@ session_start();
                     </ul>
                 </li>
             </ul>
-            <span class="navbar-text">
+            <div class="navbar-text">
                 <?php if (isset($_SESSION['user'])) { ?>
-                    <a class="nav-link "
-                       href="">Jméno</a> |
-                     <a class="nav-link login-link "
-                        href="">Odhlásit </a>
+                    <a class="nav-link " href="">
+                        <?= $_SESSION['user']['name'] ?>
+                        <?= $_SESSION['user']['surname'] ?>
+                    </a> |
+                    <a class="nav-link logout-link" href="../user/logout.php">
+<!--                       <p>Odhlásit</p>-->
+                        <img src="../source/icons/sign-out.svg" class="sign-in-icon">
+                    </a>
                 <?php } else { ?>
-                    <a href="" class="nav-link login-link">Přihlásit se</a>
+                    <a href="../user/login.php" class="nav-link login-link">
+                        <p>Přihlásit se</p>
+                        <img src="../source/icons/sign-in.svg" class="sign-in-icon">
+                    </a>
                 <?php } ?>
-            </span>
+            </div>
         </div>
     </div>
 </nav>
