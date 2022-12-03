@@ -23,8 +23,6 @@ $categoryRepo = new CategoryRepository($db);
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- STYLE LINKS -->
-    <script src="https://code.jquery.com/jquery-3.6.1.js"
-            integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     <?php $tool->importBootstrap(); ?>
     <link rel="stylesheet" href="../source/styles/style.css">
 

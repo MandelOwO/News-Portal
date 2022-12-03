@@ -7,10 +7,8 @@ App::init();
 
 $tool = new Tools();
 $db = new Database();
-$articleRepo = new ArticleRepository($db);
 $authorRepo = new AuthorRepository($db);
 $categoryRepo = new CategoryRepository($db);
-
 
 ?>
 
@@ -41,7 +39,7 @@ require_once '../source/pages/navbar.php';
 <main>
     <section>
         <article class="login-window">
-            <form action="" method="post" class="login-form">
+            <form action="registerSubmit.php" method="post" class="login-form">
                 <div>
                     <label for="mail">Email</label>
                     <input type="email" id="mail" name="mail" class="text-input input-login" required>
@@ -63,7 +61,12 @@ require_once '../source/pages/navbar.php';
                 </div>
 
                 <p class="login-error">
-                    Prosím vyplňte všechna pole.
+                    <?php if (isset($_GET['error']) && $_GET['error'] == 'empty-field') { ?>
+                        Prosím vyplňte všechna pole.
+                    <?php } ?>
+                    <?php if (isset($_GET['error']) && $_GET['error'] == 'email-taken') { ?>
+                        Pod tímto emailem je již zaregistrovaný jiný uživatel.
+                    <?php } ?>
                 </p>
 
                 <p>Už máte účet?
