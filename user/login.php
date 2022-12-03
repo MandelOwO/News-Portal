@@ -26,7 +26,12 @@ $categoryRepo = new CategoryRepository($db);
     <?php $tool->importBootstrap(); ?>
     <link rel="stylesheet" href="../source/styles/style.css">
 
+    <!-- import jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
     <title>Neko news | Přihlášení</title>
+
+
 </head>
 <body>
 
@@ -39,19 +44,25 @@ require_once '../source/pages/navbar.php';
 <main>
     <section>
         <article class="login-window">
-            <form action="" method="post" class="login-form">
+            <form action="login-submit.php" method="post" class="login-form">
                 <div>
                     <label for="mail">Email</label>
-                    <input type="text" id="mail" name="mail" class="text-input input-login">
+                    <input type="text" id="mail" name="mail" class="text-input input-login" required>
                 </div>
 
                 <div>
                     <label for="pass">Heslo</label>
-                    <input type="password" id="pass" name="pass" class="text-input input-login">
+                    <input type="password" id="pass" name="pass" class="text-input input-login" required>
                 </div>
 
                 <p class="login-error">
-                    Nesprávný email nebo heslo.
+                    <?php if (isset($_GET['error']) && $_GET['error'] == 'empty-field') { ?>
+                        Prosím vyplňte všechna pole.
+                    <?php } else if (isset($_GET['error']) && $_GET['error'] == 'invalid-credentials'){ ?>
+                        Nesprávný email nebo heslo.
+                    <?php } else if (isset($_GET['error']) && $_GET['error'] == 'inactive-account'){ ?>
+                        Váš účet byl deaktivován, obraťte se prosím na administrátora.
+                    <?php } ?>
                 </p>
 
                 <p>Nemáte účet?
@@ -63,6 +74,37 @@ require_once '../source/pages/navbar.php';
         </article>
     </section>
 </main>
+
+
+
+
+
+<?php if (isset($_GET['registered'])){ ?>
+
+    <!--Modal JS Script -->
+    <script type="text/javascript">
+        window.onload = () => {
+            $('#onload').modal('show');
+        }
+    </script>
+
+    <div class="modal fade" id="onload" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Registrace byla úspěšná</h5>
+                </div>
+                <div class="modal-body">
+                    Nyní se můžete přihlásit.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<?php } ?>
 
 </body>
 </html>

@@ -39,7 +39,7 @@ require_once '../source/pages/navbar.php';
 <main>
     <section>
         <article class="login-window">
-            <form action="registerSubmit.php" method="post" class="login-form">
+            <form action="register-submit.php" method="post" class="login-form">
                 <div>
                     <label for="mail">Email</label>
                     <input type="email" id="mail" name="mail" class="text-input input-login" required>

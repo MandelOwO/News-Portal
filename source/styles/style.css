@@ -126,10 +126,6 @@ body {
     }
 }
 
-.login-link {
-    color: var(--primary-font);
-}
-
 .navbar-text {
     display: flex;
     flex-direction: row;
@@ -137,11 +133,25 @@ body {
 }
 
 .login-link {
+    color: var(--primary-font);
     display: flex;
     width: 130px;
     justify-content: center;
     align-items: center;
     column-gap: 5px;
+}
+
+.logout-link {
+    color: var(--primary-font);
+    display: flex;
+    width: 35px;
+    justify-content: center;
+    align-items: center;
+    column-gap: 5px;
+}
+
+.logout-link > p {
+    margin: 0;
 }
 
 .login-link > p {
@@ -150,7 +160,7 @@ body {
 
 .sign-in-icon {
     max-height: 1.3em;
-    align-self: center;
+    align-self: end;
 
 }
 
@@ -449,7 +459,7 @@ td a:hover {
     background-color: rgba(250, 253, 246, 0.83);
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 991px) {
     .login-window {
         margin: 0 30%;
     }

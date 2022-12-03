@@ -24,9 +24,9 @@ class UserRepository extends BaseRepository
         return $this->dbConn->insert($sql, $params);
     }
 
-    public function CheckEmail($mail)
+    public function CheckEmail($mail): bool
     {
-        if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+        if (!filter_var($mail,FILTER_VALIDATE_EMAIL)) {
             return false;
         }
 
@@ -45,6 +45,20 @@ class UserRepository extends BaseRepository
         }
 
         return true;
+    }
+
+    public function GetUserLogin($mail)
+    {
+        $sql ='
+            SELECT * FROM users
+            WHERE mail = :mail
+        ';
+
+        $params = [
+          ':mail' => $mail,
+        ];
+
+        return $this->dbConn->selectOne($sql, $params);
     }
 
     protected function getTableName(): string
