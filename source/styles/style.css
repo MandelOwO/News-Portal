@@ -54,6 +54,11 @@ main {
 
 a {
     outline: none;
+    color: var(--secondary-aditional);
+}
+
+a:hover {
+    color: var(--primary-additional);
 }
 
 /*TOP BUTTON*/
@@ -100,20 +105,6 @@ body {
     margin: 0;
 }
 
-/*
-.btn-primary {
-    background-color: var(--primary-additional);
-    border-color: var(--primary-additional);
-
-}
-
-.btn-primary:hover {
-    background-color: var(--secondary-aditional);
-    border-color: var(--secondary-aditional);
-}
-*/
-
-
 .dropdown-menu {
     background-color: #428383;
     color: var(--primary-font);
@@ -145,6 +136,23 @@ body {
     column-gap: 3px;
 }
 
+.login-link {
+    display: flex;
+    width: 130px;
+    justify-content: center;
+    align-items: center;
+    column-gap: 5px;
+}
+
+.login-link > p {
+    margin: 0;
+}
+
+.sign-in-icon {
+    max-height: 1.3em;
+    align-self: center;
+
+}
 
 /* --- CONTENT --- */
 
@@ -367,7 +375,7 @@ td a:hover {
 
 .btn-save {
     margin-top: 2rem;
-    width: 5rem;
+    width: 6rem;
     grid-column: 1/2;
 }
 
@@ -423,6 +431,34 @@ td a:hover {
     background-color: var(--secondary-aditional);
 }
 
+/* --- LOGIN PANEL --- */
+.login-form {
+    display: grid;
+    row-gap: 1rem;
+}
+
+.login-form p {
+    margin: 0;
+}
+
+.login-error {
+    color: var(--secondary-aditional);
+}
+
+.input-login {
+    background-color: rgba(250, 253, 246, 0.83);
+}
+
+@media screen and (min-width: 768px) {
+    .login-window {
+        margin: 0 30%;
+    }
+}
+
+.btn-login {
+    margin: 0 !important;
+    width: 7rem;
+}
 
 /* --- >>>>>>>>>> TABLET <<<<<<<<<< --- */
 @media screen and (min-width: 768px) {
