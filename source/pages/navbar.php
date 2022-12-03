@@ -84,6 +84,7 @@ session_start();
                         <li><a class="dropdown-item" href="../admin/articles.php">Články</a></li>
                         <li><a class="dropdown-item" href="../admin/categories.php">Kategorie</a></li>
                         <li><a class="dropdown-item" href="../admin/authors.php">Autoři</a></li>
+                        <li><a class="dropdown-item" href="../admin/users.php">Uživatelé</a></li>
                     </ul>
                 </li>
             </ul>

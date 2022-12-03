@@ -7,9 +7,10 @@ App::init();
 $db = new Database();
 $authorRepo = new AuthorRepository($db);
 $categoryRepo = new CategoryRepository($db);
+$userRepo = new UserRepository($db);
 $tool = new Tools();
 
-$tableData = $authorRepo->getAuthorTableData()
+$tableData = $userRepo->getAll();
 
 ?>
 
@@ -26,7 +27,7 @@ $tableData = $authorRepo->getAuthorTableData()
     <link rel="stylesheet" href="../source/styles/style.css">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
-    <title>Neko admin | Autoři</title>
+    <title>Neko admin | Uživatelé</title>
 </head>
 <body>
 
@@ -38,10 +39,7 @@ require_once '../source/pages/navbar.php';
 
 <main>
     <section class="page-header white-font">
-        <h1>Administrace autorů</h1>
-        <a href="author-editor.php">
-            <button type="button" class="btn btn-bd-primary">Přidat autora</button>
-        </a>
+        <h1>Administrace uživatelů</h1>
     </section>
 
     <div class="table-container">
@@ -49,7 +47,8 @@ require_once '../source/pages/navbar.php';
             <tr>
                 <th>Příjmení</th>
                 <th>Jméno</th>
-                <th>Počet článků</th>
+                <th>Email</th>
+                <th>Stav</th>
                 <th>Akce</th>
             </tr>
 
@@ -57,19 +56,23 @@ require_once '../source/pages/navbar.php';
                 <tr>
                     <td data-th="Příjmení"><?= $row['surname'] ?></td>
                     <td data-th="Jméno"><?= $row['name'] ?></td>
-                    <td data-th="Počet článků"><?= $row['article_count'] ?></td>
+                    <td data-th="Email"><?= $row['mail'] ?></td>
+                    <td data-th="Zveřejněný">
+                        <?php if ($row['active']) { ?>
+                            <img src="../source/icons/check.svg" alt="ano" height="25">
+                        <?php } else { ?>
+                            <img src="../source/icons/times.svg" alt="ne" height="30">
+                        <?php } ?>
+                    </td>
                     <td data-th="Akce" class="action-column">
                         <div class="btn-group btn-group-sm table-edit-buttons" role="group"
                              aria-label="Small button group">
-                            <a href="delete.php?from=authors&id=<?= $row['id'] ?>"
+                            <a href="delete.php?from=users&id=<?= $row['id'] ?>"
                                type="button" class="btn btn-outline-dark btn-delete"
-                                <?php if ($row['article_count'] > 0) { ?>
-                                    data-bs-toggle="modal" data-bs-target="#exampleModal"
-                                <?php } ?>
                             >
                                 <img src="../source/icons/trash.svg" alt="smazat" class="table-icon">
                             </a>
-                            <a href="author-editor.php?id=<?= $row['id'] ?>" type="button"
+                            <a href="user-editor.php?id=<?= $row['id'] ?>" type="button"
                                class="btn btn-outline-dark btn-edit ">
                                 <img src="../source/icons/pen.svg" alt="upravit" class="table-icon">
                             </a>
@@ -80,26 +83,5 @@ require_once '../source/pages/navbar.php';
         </table>
     </div>
 </main>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Autor nemůže být smazán</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Autora nelze smazat, protože jsou pod jeho jménem napsány nějaké články. Nejprve odstraňte články od
-                tohoto autora.
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
 </body>
 </html>

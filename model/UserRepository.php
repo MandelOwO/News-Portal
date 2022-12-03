@@ -61,8 +61,9 @@ class UserRepository extends BaseRepository
         return $this->dbConn->selectOne($sql, $params);
     }
 
+
     protected function getTableName(): string
     {
-        return 'user';
+        return 'users';
     }
 }
