@@ -1,7 +1,5 @@
 <?php
 
-
-
 require_once '../tools/access-editor.php';
 
 require_once '../App.php';
@@ -33,7 +31,6 @@ if (isset($_POST) && !empty($_POST)) {
     $title = trim($_POST['title']);
     $perex = trim($_POST['perex']);
     $text = $_POST['article-text'];
-    $image = $_POST['photo'];
     $author_id = $_POST['author'];
 
     $published = 0;
@@ -46,14 +43,18 @@ if (isset($_POST) && !empty($_POST)) {
         $categories = $_POST['category'];
     }
 
+    require_once '../tools/uploader.php';
+    /** @var string $file_name_new */
 
     if (!$article) {
-        $lastId = $articleRepo->insert($title, $perex, $text, $image, $author_id, $published);
+
+        $lastId = $articleRepo->insert($title, $perex, $text, $file_name_new, $author_id, $published);
         $categoryRepo->updateCategoriesForArticle($lastId, $categories);
     } else {
-        $articleRepo->update($_GET['id'], $title, $perex, $text, $image, $author_id, $published);
+        $articleRepo->update($_GET['id'], $title, $perex, $text, $file_name_new, $author_id, $published);
         $categoryRepo->updateCategoriesForArticle($_GET['id'], $categories);
     }
+
     header('Location: articles.php');
 
 
@@ -103,7 +104,7 @@ require_once '../source/pages/navbar.php';
 
     <section class="editor">
 
-        <form action="" method="post" id="article-form">
+        <form action="" method="post" id="article-form" enctype="multipart/form-data">
 
             <label for="author" class="label-header">Autor: </label>
 
@@ -129,8 +130,7 @@ require_once '../source/pages/navbar.php';
             ><?= $article ? $article['text'] : '' ?></textarea>
 
             <label for="photo" class="label-header">Fotka: </label>
-            <input type="url" name="photo" id="photo" class="text-input"
-                   value="<?= $article ? $article['image'] : '' ?>">
+            <input type="file" name="photo" id="photo" >
 
             <label class="label-header">Kategorie: </label>
             <div class="categories-selection">

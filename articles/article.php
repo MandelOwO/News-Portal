@@ -68,7 +68,7 @@ require_once '../source/pages/navbar.php';
                     <i> <?= $article['perex'] ?></i>
                 </div>
                 <div class="article-image">
-                    <img src="<?= $article['image'] ?>" alt="obrázek ke článku">
+                    <img src="../source/uploads/<?= $article['image'] ?>" alt="obrázek ke článku">
                 </div>
                 <div class="article-body">
                     <?= $article['text'] ?>
