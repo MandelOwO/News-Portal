@@ -1,5 +1,7 @@
 <?php
 
+require_once '../tools/access-admin-only.php';
+
 require_once '../App.php';
 require_once '../tools/Tools.php';
 App::init();
@@ -28,11 +30,10 @@ if (isset($_POST) && !empty($_POST)) {
     if (!empty($name) && !empty($surname) && !empty($mail)) {
         if (!$user) {
             $userRepo->insert($mail, $name, $surname, $role, $active);
-            header('Location: users.php');
         } else {
             $userRepo->update($user['id'], $mail, $name, $surname, $role, $active);
-            header('Location: users.php');
         }
+        header('Location: users.php');
     }
 }
 

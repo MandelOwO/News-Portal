@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 require_once '../App.php';
 App::init();
@@ -35,7 +36,6 @@ if ($user['active'] == 0){
     die();
 }
 
-session_start();
 $_SESSION['user'] = $user;
 
 header('Location: ../articles');

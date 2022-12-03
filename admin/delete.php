@@ -1,4 +1,7 @@
 <?php
+
+require_once '../tools/access-editor.php';
+
 require_once '../App.php';
 App::init();
 
@@ -18,11 +21,15 @@ if ($from == 'categories' && $categoryRepo->checkDelete($id)) {
     $articleRepo->delete($id);
 
 } else if ($from == 'authors' && $authorRepo->checkDelete($id)) {
-    $authorRepo->delete($id);
+    if ($_SESSION['user']['role'] == 'admin'){
+        $authorRepo->delete($id);
+    }
+
 
 } else if ($from == 'users' && $authorRepo->checkDelete($id)) {
-    $userRepo->delete($id);
-
+    if ($_SESSION['user']['role'] == 'admin'){
+        $userRepo->delete($id);
+    }
 }
 
 header('Location: ' . $from . '.php');

@@ -87,7 +87,7 @@ class UserRepository extends BaseRepository
             ':id' => $id
         ];
 
-        return $this->dbConn->update($sql, $params);
+        $this->dbConn->update($sql, $params);
 
     }
 

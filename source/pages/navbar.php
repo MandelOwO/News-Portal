@@ -9,7 +9,6 @@
 $menuCategorySource = $categoryRepo->getLastFiveCategories();
 $menuAuthorSource = $authorRepo->getLastFiveAuthors();
 
-session_start();
 ?>
 
 
@@ -70,23 +69,30 @@ session_start();
                         <li><a class="dropdown-item" href="../author">Všichni autoři</a></li>
                     </ul>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle <?= $page == 'admin' ? 'active' : '' ?>"
-                       href="#" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        Administrace
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="../admin">Dashboard</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
+                <?php if (isset($_SESSION['user'])) { ?>
+                    <?php if ($_SESSION['user']['role'] == 'admin' || $_SESSION['user']['role'] == 'editor') { ?>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle <?= $page == 'admin' ? 'active' : '' ?>"
+                               href="#" role="button" data-bs-toggle="dropdown"
+                               aria-expanded="false">
+                                Administrace
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="../admin">Dashboard</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="../admin/articles.php">Články</a></li>
+                                <li><a class="dropdown-item" href="../admin/categories.php">Kategorie</a></li>
+
+                                <?php if ($_SESSION['user']['role'] == 'admin') { ?>
+                                    <li><a class="dropdown-item" href="../admin/authors.php">Autoři</a></li>
+                                    <li><a class="dropdown-item" href="../admin/users.php">Uživatelé</a></li>
+                                <?php } ?>
+                            </ul>
                         </li>
-                        <li><a class="dropdown-item" href="../admin/articles.php">Články</a></li>
-                        <li><a class="dropdown-item" href="../admin/categories.php">Kategorie</a></li>
-                        <li><a class="dropdown-item" href="../admin/authors.php">Autoři</a></li>
-                        <li><a class="dropdown-item" href="../admin/users.php">Uživatelé</a></li>
-                    </ul>
-                </li>
+                    <?php } ?>
+                <?php } ?>
             </ul>
             <div class="navbar-text">
                 <?php if (isset($_SESSION['user'])) { ?>
@@ -95,7 +101,7 @@ session_start();
                         <?= $_SESSION['user']['surname'] ?>
                     </a> |
                     <a class="nav-link logout-link" href="../user/logout.php">
-<!--                       <p>Odhlásit</p>-->
+                        <!--                       <p>Odhlásit</p>-->
                         <img src="../source/icons/sign-out.svg" class="sign-in-icon">
                     </a>
                 <?php } else { ?>

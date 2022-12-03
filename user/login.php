@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+if (isset($_SESSION['user'])){
+    header('Location: ../articles');
+    die();
+}
 
 require_once '../App.php';
 require_once '../tools/Tools.php';

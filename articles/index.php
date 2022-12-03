@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 require_once '../App.php';
 require_once '../tools/Tools.php';
