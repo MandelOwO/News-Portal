@@ -9,6 +9,10 @@
 $menuCategorySource = $categoryRepo->getLastFiveCategories();
 $menuAuthorSource = $authorRepo->getLastFiveAuthors();
 
+if (!isset($_SESSION)){
+    session_start();
+}
+
 ?>
 
 

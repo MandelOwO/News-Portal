@@ -77,6 +77,10 @@ require_once '../source/pages/navbar.php';
         </article>
     </section>
 
+    <section class="comments">
+        <!--TODO comments-->
+    </section>
+
 
 </main>
 
