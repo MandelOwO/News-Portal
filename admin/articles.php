@@ -61,18 +61,18 @@ require_once '../source/pages/navbar.php';
 
             <?php foreach ($tableData as $row) { ?>
                 <tr>
-                    <td data-th="Dat. vytvoř."><?= $tool->convertDate($row['date']) ?></td>
-                    <td data-th="Název"><?= $row['title'] ?></td>
-                    <td data-th="Autor"><?= $row['author_name'] ?> <?= $row['author_surname'] ?></td>
-                    <td data-th="Kategorie"><?= $categoryRepo->writeCategories($row['article_id']) ?></td>
-                    <td data-th="Zveřejněný">
+                    <td data-th="Dat. vytvoř.: "><?= $tool->convertDate($row['date']) ?></td>
+                    <td data-th="Název: "><?= $row['title'] ?></td>
+                    <td data-th="Autor: "><?= $row['author_name'] ?> <?= $row['author_surname'] ?></td>
+                    <td data-th="Kategorie: "><?= $categoryRepo->writeCategories($row['article_id']) ?></td>
+                    <td data-th="Zveřejněný: ">
                         <?php if ($row['published']) { ?>
                             <img src="../source/icons/check.svg" alt="ano" height="25">
                         <?php } else { ?>
                             <img src="../source/icons/times.svg" alt="ne" height="30">
                         <?php } ?>
                     </td>
-                    <td data-th="Akce" class="action-column">
+                    <td class="action-column">
                         <div class="btn-group btn-group-sm table-edit-buttons" role="group"
                              aria-label="Small button group">
                             <a href="delete.php?from=articles&id=<?= $row['article_id'] ?>"

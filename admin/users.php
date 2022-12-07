@@ -57,18 +57,18 @@ require_once '../source/pages/navbar.php';
 
             <?php foreach ($tableData as $row) { ?>
                 <tr>
-                    <td data-th="Příjmení"><?= $row['surname'] ?></td>
-                    <td data-th="Jméno"><?= $row['name'] ?></td>
-                    <td data-th="Email"><?= $row['mail'] ?></td>
-                    <td data-th="Role"><?= $row['role'] ?></td>
-                    <td data-th="Zveřejněný">
+                    <td data-th="Příjmení: "><?= $row['surname'] ?></td>
+                    <td data-th="Jméno: "><?= $row['name'] ?></td>
+                    <td data-th="Email: "><?= $row['mail'] ?></td>
+                    <td data-th="Role: "><?= $row['role'] ?></td>
+                    <td data-th="Stav: ">
                         <?php if ($row['active']) { ?>
                             <img src="../source/icons/check.svg" alt="ano" height="25">
                         <?php } else { ?>
                             <img src="../source/icons/times.svg" alt="ne" height="30">
                         <?php } ?>
                     </td>
-                    <td data-th="Akce" class="action-column">
+                    <td class="action-column">
                         <div class="btn-group btn-group-sm table-edit-buttons" role="group"
                              aria-label="Small button group">
                             <a href="delete.php?from=users&id=<?= $row['id'] ?>"

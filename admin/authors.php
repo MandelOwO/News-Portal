@@ -57,10 +57,10 @@ require_once '../source/pages/navbar.php';
 
             <?php foreach ($tableData as $row) { ?>
                 <tr>
-                    <td data-th="Příjmení"><?= $row['surname'] ?></td>
-                    <td data-th="Jméno"><?= $row['name'] ?></td>
-                    <td data-th="Počet článků"><?= $row['article_count'] ?></td>
-                    <td data-th="Akce" class="action-column">
+                    <td data-th="Příjmení: "><?= $row['surname'] ?></td>
+                    <td data-th="Jméno: "><?= $row['name'] ?></td>
+                    <td data-th="Poč. článků: "><?= $row['article_count'] ?></td>
+                    <td class="action-column">
                         <div class="btn-group btn-group-sm table-edit-buttons" role="group"
                              aria-label="Small button group">
                             <a href="delete.php?from=authors&id=<?= $row['id'] ?>"
