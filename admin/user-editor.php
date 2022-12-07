@@ -12,11 +12,15 @@ $categoryRepo = new CategoryRepository($db);
 $userRepo = new UserRepository($db);
 $tool = new Tools();
 
+$error = 0;
+
 /* LOAD */
 $user = false;
 if (!empty($_GET['id'])) {
     $user = $userRepo->getById($_GET['id']);
 }
+
+$authors = $authorRepo->getAuthorTableData();
 
 /* SAVE */
 
@@ -27,12 +31,21 @@ if (isset($_POST) && !empty($_POST)) {
     $role = $_POST['role'];
     $active = $_POST['active'];
 
-    if (!empty($name) && !empty($surname) && !empty($mail)) {
-        if (!$user) {
-            $userRepo->insert($mail, $name, $surname, $role, $active);
-        } else {
-            $userRepo->update($user['id'], $mail, $name, $surname, $role, $active);
-        }
+
+    if ($role == 'editor' && isset($_POST['author']))
+    {
+        var_dump($_POST);
+        $authorId = $_POST['author'];
+    } else if ($role == 'editor' && empty($_POST['author'])){
+        $error = 1;
+    } else if ($role != 'editor' && isset($_POST['author'])) {
+        $error = 2;
+        $authorId = null;
+    }
+
+
+    if (!empty($name) && !empty($surname) && !empty($mail) && $error == 0) {
+        $userRepo->update($user['id'], $mail, $name, $surname, $role, $active, $authorId);
         header('Location: users.php');
     }
 }
@@ -92,10 +105,20 @@ require_once '../source/pages/navbar.php';
 
             <label for="role">Role: </label>
             <select name="role" id="role" class="text-input">
-                <option value="" hidden >-- Vyberte roli --</option>
-                <option value="user" <?= $user['role']=='user' ? 'selected' : '' ?>>Uživatel</option>
-                <option value="editor" <?= $user['role']=='editor' ? 'selected' : '' ?>>Editor</option>
-                <option value="admin" <?= $user['role']=='admin' ? 'selected' : '' ?>>Administrátor</option>
+                <option value="" hidden>-- Vyberte roli --</option>
+                <option value="user" <?= $user['role'] == 'user' ? 'selected' : '' ?>>Uživatel</option>
+                <option value="editor" <?= $user['role'] == 'editor' ? 'selected' : '' ?>>Editor</option>
+                <option value="admin" <?= $user['role'] == 'admin' ? 'selected' : '' ?>>Administrátor</option>
+            </select>
+
+            <label for="author">Autor: </label>
+            <select name="author" id="author" class="text-input">
+                <option value="" hidden>-- Vyberte Autora --</option>
+
+                <?php foreach ($authors as $author) { ?>
+                    <option value="<?= $author['id'] ?>" <?= $user['author_id'] == $author['id'] ? 'selected' : '' ?>> <?= $author['surname'] ?> <?= $author['name'] ?> </option>
+                <?php } ?>
+
             </select>
 
             <label for="active">Aktivní: </label>
@@ -105,7 +128,11 @@ require_once '../source/pages/navbar.php';
                 <span class="checkmark"></span>
             </label>
 
-            <button type="submit" class="btn btn-bd-primary btn-save">Uložit</button>
+            <button type="submit" class="btn btn-bd-primary btn-save ">Uložit</button>
+
+            <p class="login-error white-fill">
+
+            </p>
         </form>
     </section>
 </main>

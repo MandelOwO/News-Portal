@@ -26,7 +26,7 @@ class UserRepository extends BaseRepository
 
     public function CheckEmail($mail): bool
     {
-        if (!filter_var($mail,FILTER_VALIDATE_EMAIL)) {
+        if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
             return false;
         }
 
@@ -49,32 +49,28 @@ class UserRepository extends BaseRepository
 
     public function GetUserLogin($mail)
     {
-        $sql ='
+        $sql = '
             SELECT * FROM users
             WHERE mail = :mail
         ';
 
         $params = [
-          ':mail' => $mail,
+            ':mail' => $mail,
         ];
 
         return $this->dbConn->selectOne($sql, $params);
     }
 
-    public function insert(string $mail, string $name, string $surname, $role, $active)
-    {
-
-    }
-
-    public function update($id, string $mail, string $name, string $surname, $role, $active)
+    public function update($id, string $mail, string $name, string $surname, $role, $active, $authorId)
     {
         $sql = '
             UPDATE users SET
-                              mail = :mail,
-                              name = :name,
-                              surname = :surname,
-                              role = :role,
-                              active = :active
+              mail = :mail,
+              name = :name,
+              surname = :surname,
+              role = :role,
+              active = :active,
+              author_id = :author_id
             WHERE id = :id
         ';
 
@@ -84,7 +80,8 @@ class UserRepository extends BaseRepository
             ':surname' => $surname,
             ':role' => $role,
             ':active' => $active,
-            ':id' => $id
+            ':author_id' => $authorId,
+            ':id' => $id,
         ];
 
         $this->dbConn->update($sql, $params);
