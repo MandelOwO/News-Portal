@@ -36,7 +36,6 @@ if (isset($_POST) && !empty($_POST)) {
 
     if ($role == 'editor' && !empty($_POST['author']))
     {
-        var_dump($_POST);
         $authorId = $_POST['author'];
     } else if ($role == 'editor' && empty($_POST['author'])){
         $error = 1;
@@ -46,7 +45,14 @@ if (isset($_POST) && !empty($_POST)) {
 
 
     if (!empty($name) && !empty($surname) && !empty($mail) && $error == 0) {
-        $userRepo->update($user['id'], $mail, $name, $surname, $role, $active, $authorId);
-        header('Location: users.php');
+
+        try {
+            $userRepo->update($user['id'], $mail, $name, $surname, $role, $active, $authorId);
+            header('Location: users.php');
+        } catch (Exception $ex){
+            $error = 3;
+        }
+
+
     }
 }

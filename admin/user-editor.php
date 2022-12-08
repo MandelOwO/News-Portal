@@ -66,6 +66,7 @@ require_once '../source/pages/navbar.php';
             <label for="author">Autor: </label>
             <select name="author" id="author" class="text-input">
                 <option value="" hidden>-- Vyberte Autora --</option>
+                <option value="">--Žádný--</option>
 
                 <?php foreach ($authors as $author) { ?>
                     <option value="<?= $author['id'] ?>" <?= $user['author_id'] == $author['id'] ? 'selected' : '' ?>> <?= $author['surname'] ?> <?= $author['name'] ?> </option>
@@ -87,6 +88,8 @@ require_once '../source/pages/navbar.php';
                     Vybrali jste účet typu editor. Prosím přiřaďte odpovídající záznam autora k tomuto účtu.
                 <?php } else if ($error == 2){ ?>
                     Autor smí být přiřazen pouze k účtu editora.
+                <?php } else if($error == 3){ ?>
+                    Tento autor už je přiřazen k jinému účtu.
                 <?php } ?>
             </p>
         </form>
