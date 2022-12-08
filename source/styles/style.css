@@ -1,5 +1,9 @@
 /* ---  --- */
 
+* {
+
+}
+
 /* --- General styles --- */
 @font-face {
     font-family: Lora;
@@ -22,6 +26,10 @@
 
 body {
     background-color: var(--primary-background);
+    background-image: url("../images/vlcsnap-2022-11-19-13h31m58s457.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    min-height: 100vh;
     color: var(--primary-font);
 }
 
