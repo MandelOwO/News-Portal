@@ -21,7 +21,7 @@ require_once "../tools/article-editor-script.php"
 
     <!-- STYLE LINKS -->
 
-    $tool->importBootstrap(); ?>
+    <?php $tool->importBootstrap(); ?>
     <link rel="stylesheet" href="../source/styles/style.css">
     <script src="https://cdn.tiny.cloud/1/j9xmhw8bx062069njjeewsmov289hxxtzlcg26mdvr10jkdi/tinymce/6/tinymce.min.js"
             referrerpolicy="origin"></script>
