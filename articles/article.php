@@ -74,7 +74,7 @@ require_once '../source/pages/navbar.php';
                     <?= $article['text'] ?>
                 </div>
             </div>
-            <button onClick="window.print()"  class="btn btn-bd-primary">Vytisknout</button>
+<!--            <button onClick="window.print()"  class="btn btn-bd-primary">Vytisknout</button>-->
         </article>
     </section>
 

@@ -31,16 +31,17 @@ if (isset($_POST) && !empty($_POST)) {
     $role = $_POST['role'];
     $active = $_POST['active'];
 
+    $authorId = null;
 
-    if ($role == 'editor' && isset($_POST['author']))
+
+    if ($role == 'editor' && !empty($_POST['author']))
     {
         var_dump($_POST);
         $authorId = $_POST['author'];
     } else if ($role == 'editor' && empty($_POST['author'])){
         $error = 1;
-    } else if ($role != 'editor' && isset($_POST['author'])) {
+    } else if ($role != 'editor' && !empty($_POST['author'])) {
         $error = 2;
-        $authorId = null;
     }
 
 
@@ -130,8 +131,12 @@ require_once '../source/pages/navbar.php';
 
             <button type="submit" class="btn btn-bd-primary btn-save ">Uložit</button>
 
-            <p class="login-error white-fill">
-
+            <p class="login-error">
+                <?php if ($error == 1){ ?>
+                    Vybrali jste účet typu editor. Prosím přiřaďte odpovídající záznam autora k tomuto účtu.
+                <?php } else if ($error == 2){ ?>
+                    Autor smí být přiřazen pouze k účtu editora.
+                <?php } ?>
             </p>
         </form>
     </section>
