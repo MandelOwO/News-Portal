@@ -108,10 +108,21 @@ require_once '../source/pages/navbar.php';
 
             <label for="author" class="label-header">Autor: </label>
 
-            <select name="author" id="author" class="text-input select-box" required>
+            <select name="author" id="author" class="text-input select-box" required <?= isset($_SESSION['user']) && $_SESSION['user']['role'] =='editor' ? 'disabled' : '' ?>>
                 <option value="" hidden>-- Vyberte autora --</option>
                 <?php foreach ($allAuthors as $author) { ?>
-                    <option value="<?= $author['id'] ?>" <?= $article && $article['author_id'] == $author['id'] ? 'selected' : '' ?>><?= $author['name'] ?> <?= $author['surname'] ?></option>
+                    <option value="<?= $author['id'] ?>"
+                            <?php
+                            if (isset($_SESSION['user']) && $_SESSION['user']['role'] =='editor' && $_SESSION['user']['author_id'] == $author['id'])
+                            {
+                                echo 'selected';
+                            } else if ($article && $article['author_id'] == $author['id']){
+                                echo 'selected';
+                            }
+
+                    ?>>
+                        <?= $author['name'] ?> <?= $author['surname'] ?>
+                    </option>
                 <?php } ?>
             </select>
 
@@ -130,7 +141,7 @@ require_once '../source/pages/navbar.php';
             ><?= $article ? $article['text'] : '' ?></textarea>
 
             <label for="photo" class="label-header">Fotka: </label>
-            <input type="file" name="photo" id="photo" >
+            <input type="file" name="photo" id="photo">
 
             <label class="label-header">Kategorie: </label>
             <div class="categories-selection">

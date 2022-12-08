@@ -41,6 +41,30 @@ class ArticleRepository extends BaseRepository
         return $this->dbConn->selectAll($query);
     }
 
+    public function getAllArticlesForAuthor($authorId)
+    {
+        $query = '
+            SELECT 
+                ar.id as article_id,
+                ar.title as title,
+                ar.created_at as date,
+                ar.published as published,
+                au.id as author_id,
+                au.name as author_name,
+                au.surname as author_surname
+            FROM article ar
+                LEFT JOIN author au ON au.id = ar.author_id
+            WHERE author_id = :authorId
+            ORDER BY created_at 
+        ';
+
+        $params = [
+          ':authorId' => $authorId
+        ];
+
+        return $this->dbConn->selectAll($query, $params);
+    }
+
     public function getArticleById($id)
     {
         $query = '

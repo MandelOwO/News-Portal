@@ -12,7 +12,12 @@ $categoryRepo = new CategoryRepository($db);
 $articleRepo = new ArticleRepository($db);
 $tool = new Tools();
 
-$tableData = $articleRepo->getAllArticles();
+if (isset($_SESSION['user']) && $_SESSION['user']['role'] == 'admin'){
+    $tableData = $articleRepo->getAllArticles();
+} else if (isset($_SESSION['user']) && $_SESSION['user']['role'] == 'editor'){
+    $tableData = $articleRepo->getAllArticlesForAuthor($_SESSION['user']['author_id']);
+}
+
 
 ?>
 
